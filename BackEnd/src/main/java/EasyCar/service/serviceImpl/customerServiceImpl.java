@@ -27,4 +27,16 @@ public class customerServiceImpl implements customerService {
         customer map = mapper.map(dto, customer.class);
         cusrepo.save(map);
     }
+
+    @Override
+    public void Update(customerDto dto) {
+        customer map = mapper.map(dto, customer.class);
+        cusrepo.save(map);
+    }
+
+    @Override
+    public void Delete(customerDto dto) {
+        cusrepo.delete(new customer(dto.getId()));
+    }
+
 }

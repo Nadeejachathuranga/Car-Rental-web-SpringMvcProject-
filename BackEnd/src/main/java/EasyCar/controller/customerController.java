@@ -3,10 +3,7 @@ package EasyCar.controller;
 import EasyCar.dto.customerDto;
 import EasyCar.service.customerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/customer")
@@ -22,9 +19,16 @@ public class customerController {
         cusServic.Add(customerDto);
         return "sss";
     }
-    @PostMapping(params = {"id"})
-    public String Add(){
+    @PutMapping(params = {"id","name","address","lid","contact","email"})
+    public String update(String id,String name,String address,String lid,String contact,String email){
+        customerDto customerDto = new customerDto(id, name, address,lid,contact,email);
+        cusServic.Update(customerDto);
         return "succsessfully";
+    }
+    @DeleteMapping(params = {"id"})
+    String Detete(String id){
+        cusServic.Delete(new customerDto(id));
+        return "delete successfully";
     }
 
 }

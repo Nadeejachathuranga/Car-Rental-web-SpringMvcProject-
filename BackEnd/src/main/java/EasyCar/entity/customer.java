@@ -21,4 +21,7 @@ public class customer {
     private String contact;
     private String email;
 
+    public customer(String id) {
+        this.id=id;
+    }
 }

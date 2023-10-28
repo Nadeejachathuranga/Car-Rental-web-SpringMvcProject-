@@ -16,4 +16,8 @@ public class customerDto {
     private String lid;
     private String contact;
     private String email;
+
+    public customerDto(String id) {
+        this.id=id;
+    }
 }

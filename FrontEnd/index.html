@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Car Rental </title>
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="container-fluid">
+
+<nav class="navbar navbar-dark bg-dark navbar-expand-sm">
+    <a href="" class="navbar-brand">Easy Car Rental</a>
+    <button class="navbar-toggler " data-toggle="collapse" data-target="#mob"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse justify-content-end" id="#mob">
+        <ul class="navbar-nav">
+            <li class="nav-item active"><a href="" class="nav-link"> Home</a></li>
+            <li class="nav-item"><a href="" class="nav-link"> Reg</a></li>
+            <li class="nav-item"><a href="" class="nav-link"> Info</a></li>
+            <li class="nav-item"><a href="assets/pages/dashBoard.html" class="nav-link"> Log</a></li>
+        </ul>
+    </div>
+</nav>
+    <div class="firstbox">
+    <div class="col-12 ">
+        <img src="assets/img/bentley-bentayga.jpg" alt="" class="mx-auto d-block img-fluid" width="1320px">
+    </div><!-- 1st car-->
+
+    <div class="dd">
+        <h1 style="color: white">Book a Car Near You And <br>
+        Drive in Minutes!</h1>
+        <p style="color: white">Individual .carousel-item interval
+        Add data to a .carousel-item to change <br>the amount of time to delay between automatically cycling to the next item.</p>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalMoreContent">
+           Sing Up
+        </button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalMoreContent">
+            Reg
+        </button>
+    </div>
+    </div>
+
+    <!-- Card Deck -->
+    <div class="card-deck">
+        <div class="card">
+            <img src="assets/img/sedan.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"> Luxury Cars</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <ul>
+                    <li style="list-style: none "><a href="assets/pages/sedanSelecting.html" >Choose..</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="card">
+            <img src="assets/img/SUV.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"> Premium Cars</h5>
+                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                <ul>
+                    <listyle="list-style: none "><a href="assets/pages/sedanSelecting.html">Choose..</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="card" id="pickup">
+            <img src="assets/img/pickup%202.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"> General Cars</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                <ul>
+                    <listyle="list-style: none "><a href="assets/pages/sedanSelecting.html">Choose..</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal fade" tabindex="-1" id="exampleModalMoreContent" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Modal Body -->
+                    <form id="regForm">
+                        <div class="form-group">
+                            <label for="idInputTxt">Id</label>
+                            <input type="text" class="form-control" id="idInputTxt" placeholder="insert Id">
+                        </div>
+                        <div class="form-group">
+                            <label for="nameInputTxt">Name</label>
+                            <input type="text" class="form-control" id="nameInputTxt" placeholder="inset Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="addressInputTxt">Address</label>
+                            <input type="text" class="form-control" id="addressInputTxt" placeholder="insert Address">
+                        </div>
+                        <div class="form-group">
+                            <label for="lidInputTxt">Lid</label>
+                            <input type="text" class="form-control" id="lidInputTxt" placeholder="insert Lid">
+                        </div>
+                        <div class="form-group">
+                            <label for="ContactInputText">Contact</label>
+                            <input type="text" class="form-control" id="ContactInputText" placeholder="insert Contact">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                        <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                        </div>
+                        <button  id="sub" type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <p> Please login first </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- // Modal more content -->
+
+    <div class="footer"></div>
+
+</div><!--container -fluid-->
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="controller/ccc.js"></script>
+
+
+
+</body>
+</html>

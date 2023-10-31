@@ -1,0 +1,47 @@
+.firstbox{
+    position: relative;
+}
+
+.dd{
+    position: absolute;
+    top: 0px;
+    margin-top: 150px;
+    margin-left: 100px;
+}
+.dd h1{
+    margin: 25px;
+    margin-left: 0px;
+    font-weight: bold;
+}
+.sideTextBox{
+    position: absolute;
+    top: 0px;
+    margin-top: 150px;
+    margin-left: 850px;
+}
+#tb{
+    margin-left: 70px;
+}
+.requestBOx{
+
+}
+.requestBOx img{
+    margin-left: 100px;
+    margin-top: 0px;
+    position: relative;
+}
+.bInfo{
+    width: 300px;
+    position: absolute;
+    margin-left: 330px;
+    top: 290px;
+}
+.bReq{
+    width: 300px;
+}
+#canB{
+    margin-left: 50px;
+}
+#accB{
+    margin-left: 150px;
+}

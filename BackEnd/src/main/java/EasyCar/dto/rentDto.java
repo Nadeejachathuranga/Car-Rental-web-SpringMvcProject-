@@ -15,7 +15,8 @@ public class rentDto {
    private String pickDay;
    private String status;
 
-    public rentDto(String status) {
+    public rentDto(String rentId, String status) {
+        this.rentId=rentId;
         this.status=status;
     }
 }

@@ -18,9 +18,9 @@ public class rentController {
        return rentService.makeRent(rentDto);
     }
 
-    @PutMapping(params = {"status"})
-    public rentDto defineRent(String status){
-        rentDto rentDto = new rentDto(status);
+    @PutMapping(params = {"rentId","status"})
+    public rentDto defineRent(String rentId,String status){
+        rentDto rentDto = new rentDto(rentId,status);
        return rentService.defineRent(rentDto);
     }
 }

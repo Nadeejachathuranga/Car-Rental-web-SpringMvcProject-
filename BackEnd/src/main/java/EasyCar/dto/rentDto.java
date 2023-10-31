@@ -14,4 +14,8 @@ public class rentDto {
    private String days;
    private String pickDay;
    private String status;
+
+    public rentDto(String status) {
+        this.status=status;
+    }
 }

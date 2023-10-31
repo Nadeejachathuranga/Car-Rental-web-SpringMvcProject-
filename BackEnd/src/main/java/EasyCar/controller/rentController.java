@@ -3,10 +3,7 @@ package EasyCar.controller;
 import EasyCar.dto.rentDto;
 import EasyCar.service.rentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
@@ -19,5 +16,11 @@ public class rentController {
     public rentDto makeRent(String rentId,String cusId,String carId,String days,String pickDay,String status){
         rentDto rentDto = new rentDto(rentId, cusId, carId, days, pickDay, status);
        return rentService.makeRent(rentDto);
+    }
+
+    @PutMapping(params = {"status"})
+    public rentDto defineRent(String status){
+        rentDto rentDto = new rentDto(status);
+       return rentService.defineRent(rentDto);
     }
 }

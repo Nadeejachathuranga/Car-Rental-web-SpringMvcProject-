@@ -24,4 +24,11 @@ public class rentServiceImpl implements rentService {
         rent save = rentRepo.save(map);
         return mapper.map(save,rentDto.class);
     }
+
+    @Override
+    public rentDto defineRent(rentDto dto) {
+        rent map = mapper.map(dto, rent.class);
+        rent save = rentRepo.save(map);
+       return mapper.map(save,rentDto.class);
+    }
 }

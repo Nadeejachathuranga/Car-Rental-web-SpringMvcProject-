@@ -1,8 +1,10 @@
-const BASE_URL = "http://localhost:8080/BackEnd_war";
+//const BASE_URL = "http://localhost:8080/BackEnd_war";
 
-$("#canB").click(function (){
-    alert("clicked");
-    getAllRentReq();
+$("#accB").click(function () {
+    console.log(gjhkpg);
+    alert("ll");
+   // getAllRentReq();
+
 
 });
 
@@ -21,14 +23,12 @@ function getAllRentReq(){
                 let carId = rent.carId;
                 let days = rent.days;
                 let pickday = rent.pickDay;
-                let status = rent.status;
-                let row = `<tr><td>${id}</td><td>${name}</td><td>${carId}</td><td>${days}</td><td>${pickday}</td><td>${status}</td></tr>`;
+                let statuss = rent.statuss;
+                let row = `<tr><td>${id}</td><td>${name}</td><td>${carId}</td><td>${days}</td><td>${pickday}</td><td>${statuss}</td></tr>`;
                 $("#tblCustomer").append(row);
             }
         },
-        error: function (error) {
-            alert(error.responseJSON.message);
-        }
+
     });
 
 };

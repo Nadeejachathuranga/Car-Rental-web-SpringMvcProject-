@@ -1,5 +1,5 @@
 
-    const BASE_URL = "http://localhost:8080/BackEnd_war";
+    const BASE_URL = "http://localhost:8080/BackEnd_war/";
 
     $("#sub").click(function () {
   /*  let id=$("#idInputTxt").val();
@@ -14,9 +14,13 @@
     alert("fdgfdg")
     });
 
+    $("#accBb").click(function () {
+        alert("fdgfdg")
+    })
+
     function addCus(id,name,address,lid,contact,email){
         $.ajax({
-            url: BASE_URL + "/customer?id=&name=&address=&lid=&contact=&email="+id,name,address,lid,contact,email,
+            url: BASE_URL + "customer?id=&name=&address=&lid=&contact=&email="+id,name,address,lid,contact,email,
             method: 'POST',
             success: function (resp) {
                 alert(resp.message);
@@ -33,7 +37,7 @@
 
    function deleting(id){
         $.ajax({
-            url: BASE_URL + "/customer?id="+id,
+            url: BASE_URL + "customer?id="+id,
             method: 'DELETE',
             success: function (resp) {
                 if (resp.message=="delete successfully")

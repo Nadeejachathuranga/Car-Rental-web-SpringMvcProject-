@@ -6,6 +6,8 @@ import EasyCar.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/customer")
 @CrossOrigin
@@ -30,6 +32,13 @@ public class customerController {
     String Detete(String id){
         cusServic.Delete(new customerDto(id));
         return "delete successfully";
+    }
+    
+    @GetMapping(params = {"id"})
+    public  ResponseUtil findCus(String id){
+        customerDto customerDto = new customerDto(id);
+        customerDto customerDtos = cusServic.FindByID(customerDto);
+        return  new ResponseUtil("Ok", "Successfully Loaded",customerDtos);
     }
 
 

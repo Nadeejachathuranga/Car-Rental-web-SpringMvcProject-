@@ -38,16 +38,16 @@
     <section class="row">
         <div class="col-6 col-lg-5 mt-3">
            <div class="requestBOx">
-               <h3>Request</h3>
+               <h3 id="reqId">Request</h3>
                <div class="images">
                <img src="../img/sedan.jpg" width="350px" height="250px" >
                </div>
                  <div class="bReq">
-               <h6 id="cusId">cus005</h6>
+               <h6 id="custId">cus0005</h6>
                <h6 id="cusName">W.L.Nadeeja chathuranga </h6>
                <h6 id="cusTp">0715375239 </h6>
                <h6 id="cusEmail">nadeeja20@gmail.com </h6>
-               <h6 id="No driver">No required driver</h6>
+               <h6 id="lid">No required driver</h6>
                <h6 id="noDay">5 Days </h6>
                </div>
                <div class="bInfo">
@@ -73,7 +73,7 @@
         <tr>
             <th>Rent ID</th>
             <th>Cus ID</th>
-            <th>Car Days</th>
+            <th>Car ID</th>
             <th>Required Days</th>
             <th>Pickup Days</th>
             <th>Status</th>
@@ -119,13 +119,49 @@
                     let statuss = rent.statuss;
                     let row = `<tr><td>${id}</td><td>${name}</td><td>${carId}</td><td>${days}</td><td>${pickday}</td><td>${statuss}</td></tr>`;
                     $("#tblCustomer").append(row);
+
                 }
+
+                selectRow();
             },
 
         });
 
     };
+    function selectRow(){
+        $('#tblCustomer>tr').click(function () {
+            //get the selected rows data
+            let id = $(this).children().eq(1).text();
+            let reqId = $(this).children().eq(0).text();
 
+            //set the selected rows data to the input fields
+            document.getElementById("reqId").innerHTML="Request "+reqId;
+            document.getElementById("custId").innerHTML=id;
+            findCustomer(id);
+        })
+    }
+    function  findCustomer(id){
+
+        $.ajax({
+            url: BASE_URL + "/customer?id="+id,
+            method: 'Get',
+            success: function (resp) {
+                let rents = resp.data;
+
+                let id = rents.id;
+                let name = rents.name;
+                let add = rents.address;
+                let lid = rents.lid;
+                let cont = rents.contact;
+                let email = rents.email;
+                document.getElementById("custId").innerHTML=id;
+                document.getElementById("cusName").innerHTML=name;
+                document.getElementById("custp").innerHTML=cont;
+                document.getElementById("cusEmail").innerHTML=email;
+            }
+
+        });
+    }
 </script>
 </body>
 </html>

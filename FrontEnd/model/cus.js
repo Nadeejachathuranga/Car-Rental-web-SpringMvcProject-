@@ -2,6 +2,8 @@ let customer={
     id:"",
     name:"",
     address:"",
-    salary:"",
+    lid:"",
+    contact:"",
+    email:""
 
 }

@@ -1,10 +1,59 @@
 
-    const BASE_URL = "http://localhost:8080/BackEnd_war/";
+    const BASE_URL = "http://localhost:8080/BackEnd_war";
 
-function regClient(){
-     document.getElementById("#regForm").serialize();
+    $("#sub").click(function () {
+    let id=$("#idInputTxt").val();
+   let name=$("#nameInputTxt").val();
+    let address=$("#addressInputTxt").val();
+    let lid=$("#lidInputTxt").val();
+    let contact=$("#ContactInputText").val();
+    let email=$("#EmailInputText").val();
+
+
+        addCus(id,name,address,lid,contact,email);
+       // deleting(id);
+
+    });
+
+    function addCus(id,name,address,lid,contact,email){
+        $.ajax({
+            url: BASE_URL + "/customer?id=&name=&address=&lid=&contact=&email="+id,name,address,lid,contact,email,
+            method: 'POST',
+            success: function (resp) {
+                alert(resp.message);
+                return true;
+            },
+            error: function (error) {
+                alert("error");
+                return false;
+            }
+        });
+    };
+
+
+
+   function deleting(id){
+        $.ajax({
+            url: BASE_URL + "/customer?id="+id,
+            method: 'DELETE',
+            success: function (resp) {
+                if (resp.message=="delete successfully")
+                alert("delete successfully");
+
+            },
+            error: function (error) {
+                alert("error");
+                return false;
+            }
+        });
+   };
+
+/*function regClient(){
+     $("#regForm").serialize();
+    alert("clicked regform");
     console.log("dfd");
-    document.ajax({
+    $.ajax({
+
         url: BASE_URL + "customer",
         method: "post",
         headers:{
@@ -17,11 +66,9 @@ function regClient(){
         error: function (error) {
 
         }
+
     });
-}
-document.getElementById("#sub").click(function () {
+    alert("final");
+}*/
 
-      regClient()
-
-});
 

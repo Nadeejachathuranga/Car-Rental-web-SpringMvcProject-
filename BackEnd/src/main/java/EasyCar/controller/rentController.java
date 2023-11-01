@@ -2,6 +2,7 @@ package EasyCar.controller;
 
 import EasyCar.dto.rentDto;
 import EasyCar.service.rentService;
+import EasyCar.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,5 +23,9 @@ public class rentController {
     public rentDto defineRent(String rentId,String status){
         rentDto rentDto = new rentDto(rentId,status);
        return rentService.defineRent(rentDto);
+    }
+    @GetMapping
+    public ResponseUtil getAll(){
+        return new ResponseUtil("Ok", "Successfully Loaded", rentService.getAllReqRent());
     }
 }

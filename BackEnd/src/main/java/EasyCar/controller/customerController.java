@@ -2,6 +2,7 @@ package EasyCar.controller;
 
 import EasyCar.dto.customerDto;
 import EasyCar.service.customerService;
+import EasyCar.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,16 +20,18 @@ public class customerController {
         cusServic.Add(customerDto);
         return "sss";
     }
-    @PutMapping(params = {"id","name","address","lid","contact","email"})
+   /* @PutMapping(params = {"id","name","address","lid","contact","email"})
     public String update(String id,String name,String address,String lid,String contact,String email){
         customerDto customerDto = new customerDto(id, name, address,lid,contact,email);
         cusServic.Update(customerDto);
         return "succsessfully";
-    }
+    }*/
     @DeleteMapping(params = {"id"})
     String Detete(String id){
         cusServic.Delete(new customerDto(id));
         return "delete successfully";
     }
+
+
 
 }

@@ -18,5 +18,5 @@ public class rent {
     private String carId;
     private String days;
     private String pickDay;
-    private String status;
+    private String statuss;
 }

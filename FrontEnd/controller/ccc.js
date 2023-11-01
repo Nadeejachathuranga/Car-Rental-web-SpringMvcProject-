@@ -2,17 +2,16 @@
     const BASE_URL = "http://localhost:8080/BackEnd_war";
 
     $("#sub").click(function () {
-    let id=$("#idInputTxt").val();
+  /*  let id=$("#idInputTxt").val();
    let name=$("#nameInputTxt").val();
     let address=$("#addressInputTxt").val();
     let lid=$("#lidInputTxt").val();
     let contact=$("#ContactInputText").val();
-    let email=$("#EmailInputText").val();
+    let email=$("#EmailInputText").val();*/
 
-
-        addCus(id,name,address,lid,contact,email);
+      //  addCus(id,name,address,lid,contact,email);
        // deleting(id);
-
+    alert("fdgfdg")
     });
 
     function addCus(id,name,address,lid,contact,email){

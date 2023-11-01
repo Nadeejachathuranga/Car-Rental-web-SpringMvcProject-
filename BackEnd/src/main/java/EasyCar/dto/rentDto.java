@@ -13,10 +13,10 @@ public class rentDto {
    private String carId;
    private String days;
    private String pickDay;
-   private String status;
+   private String statuss;
 
     public rentDto(String rentId, String status) {
         this.rentId=rentId;
-        this.status=status;
+        this.statuss =status;
     }
 }

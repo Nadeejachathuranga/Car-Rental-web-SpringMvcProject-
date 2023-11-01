@@ -1,7 +1,9 @@
 const BASE_URL = "http://localhost:8080/BackEnd_war";
 
-$("#CanB").click(function (){
+$("#canB").click(function (){
+    alert("clicked");
     getAllRentReq();
+
 });
 
 function getAllRentReq(){
@@ -11,14 +13,16 @@ function getAllRentReq(){
         method: 'GET',
         dataType: "json",
         success: function (response) {
-            let customers = response.data;
-            for (let i in customers) {
-                let cus = customers[i];
-                let id = cus.id;
-                let name = cus.name;
-                let address = cus.address;
-                let salary = cus.salary;
-                let row = `<tr><td>${id}</td><td>${name}</td><td>${address}</td><td>${salary}</td></tr>`;
+            let rent = response.data;
+            for (let i in rent) {
+                let rent = rent[i];
+                let id = rent.rentId;
+                let name = rent.cusId;
+                let carId = rent.carId;
+                let days = rent.days;
+                let pickday = rent.pickDay;
+                let status = rent.status;
+                let row = `<tr><td>${id}</td><td>${name}</td><td>${carId}</td><td>${days}</td><td>${pickday}</td><td>${status}</td></tr>`;
                 $("#tblCustomer").append(row);
             }
         },

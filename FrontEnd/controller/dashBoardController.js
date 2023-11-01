@@ -1,6 +1,6 @@
-//const BASE_URL = "http://localhost:8080/BackEnd_war";
+const BASE_URL = "http://localhost:8080/BackEnd_war";
 
-$("#accB").click(function () {
+$("#canB").click(function () {
     console.log(gjhkpg);
     alert("ll");
    // getAllRentReq();

@@ -1,26 +1,30 @@
 
-    const BASE_URL = "http://localhost:8080/BackEnd_war/";
+    const BASE_URL = "http://localhost:8080/BackEnd_war";
 
     $("#sub").click(function () {
-  /*  let id=$("#idInputTxt").val();
+    let id=$("#idInputTxt").val();
    let name=$("#nameInputTxt").val();
     let address=$("#addressInputTxt").val();
     let lid=$("#lidInputTxt").val();
     let contact=$("#ContactInputText").val();
-    let email=$("#EmailInputText").val();*/
+    let email=$("#EmailInputText").val();
 
-      //  addCus(id,name,address,lid,contact,email);
-       // deleting(id);
-    alert("fdgfdg")
+       addCus(id,name,address,lid,contact,email);
+        //deleting(id);
+   // alert("fdgfdg")
     });
 
     $("#accBb").click(function () {
-        alert("fdgfdg")
-    })
+        alert("fdgfdghuihiuh")
+    });
+
+    $("#vgv").click(function () {
+        alert("fdgfdghuihiuh hi hi")
+    });
 
     function addCus(id,name,address,lid,contact,email){
         $.ajax({
-            url: BASE_URL + "customer?id=&name=&address=&lid=&contact=&email="+id,name,address,lid,contact,email,
+            url: BASE_URL + "/customer?id="+id+"&name="+name+"&address="+address+"&lid="+lid+"&contact="+contact+"&email="+email,
             method: 'POST',
             success: function (resp) {
                 alert(resp.message);
@@ -37,7 +41,7 @@
 
    function deleting(id){
         $.ajax({
-            url: BASE_URL + "customer?id="+id,
+            url: BASE_URL + "/customer?id="+id,
             method: 'DELETE',
             success: function (resp) {
                 if (resp.message=="delete successfully")

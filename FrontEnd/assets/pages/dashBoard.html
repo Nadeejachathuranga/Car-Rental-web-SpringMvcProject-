@@ -5,8 +5,9 @@
     <title>dash</title>
   <link rel="stylesheet" href="../css/bootstrap.css">
   <link rel="stylesheet" href="../css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
-<body>
+<body class="body" onload="getAllRentReq();">
 <div class="container-fluid">
     <div class="card-deck">
         <div class="card">
@@ -87,5 +88,44 @@
     </section>
 </div>
 </div>
+
+
+
+<script>
+    const BASE_URL = "http://localhost:8080/BackEnd_war";
+
+    $("#canB").click(function () {
+       // alert("ll");
+         getAllRentReq();
+
+
+    });
+
+    function getAllRentReq(){
+        $("#tblCustomer").empty();
+        $.ajax({
+            url: BASE_URL + '/rent',
+            method: 'GET',
+            dataType: "json",
+            success: function (response) {
+                let rents = response.data;
+                for (let i in rents) {
+                    let rent = rents[i];
+                    let id = rent.rentId;
+                    let name = rent.cusId;
+                    let carId = rent.carId;
+                    let days = rent.days;
+                    let pickday = rent.pickDay;
+                    let statuss = rent.statuss;
+                    let row = `<tr><td>${id}</td><td>${name}</td><td>${carId}</td><td>${days}</td><td>${pickday}</td><td>${statuss}</td></tr>`;
+                    $("#tblCustomer").append(row);
+                }
+            },
+
+        });
+
+    };
+
+</script>
 </body>
 </html>

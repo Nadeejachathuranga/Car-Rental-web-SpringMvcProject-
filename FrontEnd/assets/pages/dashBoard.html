@@ -18,6 +18,7 @@
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 <ul>
                     <li style="list-style: none "><a href="../pages/sedanSelecting.html">Manage</a></li>
+                    <li style="list-style: none "><a href="../pages/rentCheckOut.html">Check Out Rent</a></li>
                 </ul>
             </div>
 
@@ -30,6 +31,7 @@
                 <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
                 <ul>
                     <li style="list-style: none "><a href="../pages/sedanSelecting.html">Manage</a></li>
+
                 </ul>
             </div>
 
@@ -43,12 +45,12 @@
                <img src="../img/sedan.jpg" width="350px" height="250px" >
                </div>
                  <div class="bReq">
-               <h6 id="custId">cus0005</h6>
-               <h6 id="cusName">W.L.Nadeeja chathuranga </h6>
-               <h6 id="cusTp">0715375239 </h6>
-               <h6 id="cusEmail">nadeeja20@gmail.com </h6>
-               <h6 id="lid">No required driver</h6>
-               <h6 id="noDay">5 Days </h6>
+               <h6 id="custId">Customer Id</h6>
+               <h6 id="cusName">Customer Name </h6>
+               <h6 id="cusTp">Contact Number </h6>
+               <h6 id="cusEmail">Email </h6>
+               <h6 id="lid">Driver Request</h6>
+               <h6 id="noDay">Request Days</h6>
                </div>
                <div class="bInfo">
                    <h6 id="bvName">BMW 720D</h6>
@@ -58,7 +60,7 @@
                    <h6 id="bAmount"> 100000 </h6>
                </div>
                <div class="row">
-                   <button id="accBb" type="button" class="btn btn-primary" >
+                   <button id="accB" type="button" class="btn btn-primary" >
                        Accept
                    </button>
                    <button type="button" class="btn btn-primary" id="canB">
@@ -93,6 +95,11 @@
 
 <script>
     const BASE_URL = "http://localhost:8080/BackEnd_war";
+    let reqId;
+    let id;
+    let reqDays;
+    let carId;
+    let pickDay;
 
     $("#canB").click(function () {
        // alert("ll");
@@ -111,15 +118,16 @@
                 let rents = response.data;
                 for (let i in rents) {
                     let rent = rents[i];
-                    let id = rent.rentId;
-                    let name = rent.cusId;
-                    let carId = rent.carId;
-                    let days = rent.days;
-                    let pickday = rent.pickDay;
-                    let statuss = rent.statuss;
-                    let row = `<tr><td>${id}</td><td>${name}</td><td>${carId}</td><td>${days}</td><td>${pickday}</td><td>${statuss}</td></tr>`;
-                    $("#tblCustomer").append(row);
-
+                    if (rent.statuss=="pending") {
+                        let id = rent.rentId;
+                        let name = rent.cusId;
+                        let carId = rent.carId;
+                        let days = rent.days;
+                        let pickday = rent.pickDay;
+                        let statuss = rent.statuss;
+                        let row = `<tr><td>${id}</td><td>${name}</td><td>${carId}</td><td>${days}</td><td>${pickday}</td><td>${statuss}</td></tr>`;
+                        $("#tblCustomer").append(row);
+                    }
                 }
 
                 selectRow();
@@ -131,15 +139,44 @@
     function selectRow(){
         $('#tblCustomer>tr').click(function () {
             //get the selected rows data
-            let id = $(this).children().eq(1).text();
-            let reqId = $(this).children().eq(0).text();
+             id = $(this).children().eq(1).text();
+             reqId = $(this).children().eq(0).text();
+             reqDays = $(this).children().eq(3).text();
+             carId = $(this).children().eq(2).text();
+            pickDay = $(this).children().eq(4).text();
 
             //set the selected rows data to the input fields
             document.getElementById("reqId").innerHTML="Request "+reqId;
             document.getElementById("custId").innerHTML=id;
+            document.getElementById("noDay").innerHTML=reqDays+" Days";
+            document.getElementById("bPricePerDay").innerHTML=carId;
             findCustomer(id);
+          //  findCar(carId);
         })
     }
+
+    function findCar(carId){
+        $.ajax({
+            url: BASE_URL + "/car?id="+id,
+            method: 'Get',
+            success: function (resp) {
+                let car = resp.data;
+
+                let id = car.id;
+                let name = car.name;
+                let add = car.address;
+                let lid = car.lid;
+                let cont = car.contact;
+                let email = car.email;
+                document.getElementById("custId").innerHTML=id;
+                document.getElementById("cusName").innerHTML=name;
+                document.getElementById("cusTp").innerHTML=cont;
+                document.getElementById("cusEmail").innerHTML=email;
+            }
+
+        });
+    };
+
     function  findCustomer(id){
 
         $.ajax({
@@ -156,12 +193,29 @@
                 let email = rents.email;
                 document.getElementById("custId").innerHTML=id;
                 document.getElementById("cusName").innerHTML=name;
-                document.getElementById("custp").innerHTML=cont;
+                document.getElementById("cusTp").innerHTML=cont;
                 document.getElementById("cusEmail").innerHTML=email;
             }
 
         });
     }
+    $("#accB").click(function (){
+
+        $.ajax({
+            url: BASE_URL + "/rent?rentId="+reqId+"&cusId="+id+"&carId="+carId+"&days="+reqDays+"&pickDay="+pickDay+"&statuss=Accept",
+            method: 'PUT',
+            success: function (resp) {
+                let res=resp.data
+                let resP=res.statuss;
+                if (resP=="Accept"){
+                    alert(reqId + " Accept Process Successfully")
+                }
+
+            },
+            error: function (error) {}
+        });
+        getAllRentReq();
+    });
 </script>
 </body>
 </html>

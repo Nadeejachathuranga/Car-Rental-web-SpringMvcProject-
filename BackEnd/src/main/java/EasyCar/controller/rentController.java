@@ -13,15 +13,15 @@ public class rentController {
     @Autowired
     rentService rentService;
 
-    @PostMapping(params = {"rentId","cusId","carId","days","pickDay","status"})
-    public rentDto makeRent(String rentId,String cusId,String carId,String days,String pickDay,String status){
-        rentDto rentDto = new rentDto(rentId, cusId, carId, days, pickDay, status);
+    @PostMapping(params = {"rentId","cusId","carId","days","pickDay","statuss"})
+    public rentDto makeRent(String rentId,String cusId,String carId,String days,String pickDay,String statuss){
+        rentDto rentDto = new rentDto(rentId, cusId, carId, days, pickDay, statuss);
        return rentService.makeRent(rentDto);
     }
 
-    @PutMapping(params = {"rentId","status"})
-    public rentDto defineRent(String rentId,String status){
-        rentDto rentDto = new rentDto(rentId,status);
+    @PutMapping(params = {"rentId","cusId","carId","days","pickDay","statuss"})
+    public rentDto defineRent(String rentId,String cusId,String carId,String days,String pickDay,String statuss){
+        rentDto rentDto = new rentDto(rentId, cusId, carId, days, pickDay, statuss);
        return rentService.defineRent(rentDto);
     }
     @GetMapping

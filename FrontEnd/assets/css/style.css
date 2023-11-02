@@ -45,3 +45,19 @@
 #accB{
     margin-left: 150px;
 }
+.checkOutSec{
+    position: relative;
+}
+#checkOutSecTxt{
+    margin-top: 20px;
+    width: 450px;
+    height: 50px;
+    margin-left: 300px;
+}
+#checkOutSecButton{
+    position: absolute;
+    top: 0px;
+    width: 70px;
+    height: 50px;
+    margin-left: 770px;
+}

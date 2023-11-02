@@ -41,4 +41,11 @@ public class rentServiceImpl implements rentService {
         return mapper.map(all, new TypeToken<List<rentDto>>() {
         }.getType());
     }
+
+    @Override
+    public rentDto findById(rentDto rentDto) {
+        rent map = mapper.map(rentDto, rent.class);
+        rent byId = rentRepo.findById(map.getRentId()).get();
+       return mapper.map(byId,rentDto.class);
+    }
 }

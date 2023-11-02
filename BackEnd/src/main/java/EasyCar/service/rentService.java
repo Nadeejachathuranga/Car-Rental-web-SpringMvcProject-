@@ -9,4 +9,6 @@ public interface rentService {
     rentDto defineRent(rentDto dto);
 
     List<rentDto> getAllReqRent();
+
+    rentDto findById(rentDto rentDto);
 }

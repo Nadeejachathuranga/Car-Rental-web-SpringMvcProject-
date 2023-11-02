@@ -28,4 +28,14 @@ public class rentController {
     public ResponseUtil getAll(){
         return new ResponseUtil("Ok", "Successfully Loaded", rentService.getAllReqRent());
     }
+
+    @GetMapping(params = {"id"})
+    public ResponseUtil findById(String id){
+        rentDto rentDto = new rentDto(id);
+        rentDto byId = rentService.findById(rentDto);
+        return new ResponseUtil("Ok", "Successfully Loaded",byId);
+    }
+
 }
+
+

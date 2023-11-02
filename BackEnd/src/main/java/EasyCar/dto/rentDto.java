@@ -19,4 +19,8 @@ public class rentDto {
         this.rentId=rentId;
         this.statuss =status;
     }
+
+    public rentDto(String id) {
+        this.rentId=id;
+    }
 }

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
-<body>
+<body class="body" onload="FindGeneralCars();">
 <div class="container-fluid">
 <nav class="navbar navbar-dark bg-dark navbar-expand-sm">
     <a href="" class="navbar-brand">navbrand</a>
@@ -132,6 +132,7 @@
                     <img src="../img/sedan.jpg" width="350px" height="250px" >
                 </div>
                 <div class="bReq">
+                    <h5>Available Dates</h5>
                     <h6 id="custId">Customer Id</h6>
                     <h6 id="cusName">Customer Name </h6>
                     <h6 id="cusTp">Contact Number </h6>
@@ -140,11 +141,11 @@
                     <h6 id="noDay">Request Days</h6>
                 </div>
                 <div class="bInfo">
-                    <h6 id="bvName">BMW 720D</h6>
-                    <h6 id="bPricePerDay">Rs.20000 per day</h6>
-                    <h6 id="bFreeKm">400Km Free </h6>
-                    <h6 id="bMultiple"> 20000*5 </h6>
-                    <h6 id="bAmount"> 100000 </h6>
+                    <h6 id="bvName">   </h6>
+                    <h6 id="bPricePerDay">  </h6>
+                    <h6 id="bFreeKm">  </h6>
+                    <h6 id="bMultiple"> </h6>
+                    <h6 id="bAmount">  </h6>
                 </div>
                 <div class="row">
                     <button id="GCaccB" type="button" class="btn btn-primary" >
@@ -159,7 +160,7 @@
         <div class="col-6 col-lg-6 mt-3">
             <table class="table table-bordered table-hover" id="tb">
                 <thead class="bg-success text-white">
-                <tr>
+                <tr><th>Id</th>
                     <th>Name</th>
                     <th>Brand</th>
                     <th>Colour</th>
@@ -180,6 +181,8 @@
 
 </div><!-- container-fluid -->
 <script>
+    const BASE_URL = "http://localhost:8080/BackEnd_war";
+
     $("#GCaccB").click(function (){
        FindGeneralCars();
     })
@@ -193,6 +196,7 @@
                 for (let i in cars) {
                     let car = cars[i];
                     if (car.type=="general") {
+                        let id=car.id;
                         let name = car.name;
                         let brand = car.brand;
                         let colour = car.color;
@@ -201,14 +205,22 @@
                         let pek = car.priceExtraKm;
                         let pd = car.rate;
                         let reg = car.regNo;
-                        let row = `<tr><td>${name}</td><td>${brand}</td><td>${colour}</td><td>${fuel}</td><td>${passe}</td><td>${pek}</td><td>${pd}</td><td>${reg}</td></tr>`;
+                        let row = `<tr><td>${id}</td><td>${name}</td><td>${brand}</td><td>${colour}</td><td>${fuel}</td><td>${passe}</td><td>${pek}</td><td>${pd}</td><td>${reg}</td></tr>`;
                         $("#tblCustomer").append(row);
                     }
                 }
-
+                selectRow();
             },
         })
  }
+
+    function selectRow(){
+        $('#tblCustomer>tr').click(function () {
+            id = $(this).children().eq(0).text();
+            document.getElementById("bPricePerDay").innerHTML=carId;
+
+        })
+    }
 
 </script>
 </body>

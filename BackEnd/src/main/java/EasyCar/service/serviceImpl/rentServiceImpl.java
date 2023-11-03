@@ -51,5 +51,10 @@ public class rentServiceImpl implements rentService {
        return mapper.map(byId,rentDto.class);
     }
 
+    @Override
+    public String findLastId() {
+        String lastRenId = rentRepo.getLastRenId();
+        return lastRenId;
+    }
 
 }

@@ -32,97 +32,9 @@
     </div>
 </div><!--cover-->
 
-<div class="card-deck">
-    <div class="card">
-        <img src="../img/sedan.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Sedan</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        </div>
 
-    </div>
-    <div class="card">
-        <img src="../img/SUV.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Suv</h5>
-            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-        </div>
 
-    </div>
-    <div class="card" >
-        <img src="../img/pickup%202.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Pickup</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-            <button class="btn btn-outline-primary btn-center" data-toggle="modal" data-target="#exampleModalMoreContent">Choose pickup</button>
-        </div>
 
-    </div>
-    <div class="card" >
-        <img src="../img/pickup%202.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Pickup</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-            <button class="btn btn-outline-primary btn-center" data-toggle="modal" data-target="#exampleModalMoreContent">Choose pickup</button>
-        </div>
-
-    </div>
-    <div class="card" >
-        <img src="../img/pickup%202.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Pickup</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-            <button class="btn btn-outline-primary btn-center" data-toggle="modal" data-target="#exampleModalMoreContent">Choose pickup</button>
-        </div>
-
-    </div>
-
-</div><!-- Card Deck -->
-
-    <!-- Modal more content -->
-    <div class="modal fade" tabindex="-1" id="exampleModalMoreContent" role="dialog">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <!-- Modal Body -->
-                    <form>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword11">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword11" placeholder="Password">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword12">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword12" placeholder="Password">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword13">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword13" placeholder="Password">
-                        </div>
-                        <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Login</button>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <p> Please login first </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- // Modal more content -->
 
     <section class="row">
         <div class="col-6 col-lg-5 mt-3">
@@ -148,8 +60,8 @@
                     <h6 id="bAmount">  </h6>
                 </div>
                 <div class="row">
-                    <button id="GCaccB" type="button" class="btn btn-primary" >
-                        Accept
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalMoreContent12" >
+                        Choose
                     </button>
                 </div>
             </div>
@@ -176,13 +88,84 @@
 
     </section>
 
+    <div class="modal fade" tabindex="-1" id="exampleModalMoreContent12" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Registration Form </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Modal Body -->
+                    <form id="regForm">
+                        <div class="form-group">
+                            <label for="idInputTxt">Your Id</label>
+                            <input type="text" class="form-control" id="idInputTxt" placeholder="insert Id">
+                        </div>
+                        <div class="form-group">
+                            <label for="dayInputTxt">Days</label>
+                            <input type="text" class="form-control" id="dayInputTxt" placeholder="Ex..> 2 days">
+                        </div>
+                        <div class="form-group">
+                            <label for="pickDayInputTxt">PickDay</label>
+                            <input type="text" class="form-control" id="pickDayInputTxt" placeholder="Ex..> november 3">
+                        </div>
+
+                        <button  id="conform" type="submit" class="btn btn-primary">Conform</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <p> </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- // Modal more content -->
+
+
 </div><!-- container-fluid -->
 <script>
     const BASE_URL = "http://localhost:8080/BackEnd_war";
+    let carid;
+    let LastID;
 
-    $("#GCaccB").click(function (){
-     //  FindGeneralCars();
-    })
+$("#conform").click(function (){
+    let cusId=$("#idInputTxt").val();
+    let days=$("#dayInputTxt").val();
+    let pickDate=$("#pickDayInputTxt").val();
+    findId();
+    reqestRent(cusId,days,pickDate);
+   // findId();
+})
+
+    function findId(){
+        $.ajax({
+            url: BASE_URL + "/rent?id=kk&id=fg",
+            method: 'POST',
+            success: function (resp) {
+
+            }
+        });
+
+    }
+
+    function reqestRent(cusId,days,pickDate){
+    let id="rent115";
+    let status="pending";
+        $.ajax({
+            url: BASE_URL + "/rent?rentId="+id+"&cusId="+cusId+"&carId="+carid+"&days="+days+"&pickDay="+pickDate+"&statuss="+status,
+            method: 'POST',
+            success: function (resp) {
+
+            },
+            error: function (error) {
+
+            }
+        });
+    };
+
  function FindGeneralCars(){
      $("#tblCustomer").empty();
         $.ajax({
@@ -194,7 +177,7 @@
                 for (let i in cars) {
                     let car = cars[i];
                     if (car.type=="general") {
-                        let id=car.id;
+                         carid=car.id;
                         let name = car.name;
                         let brand = car.brand;
                         let colour = car.color;
@@ -203,7 +186,7 @@
                         let pek = car.priceExtraKm;
                         let pd = car.rate;
                         let reg = car.regNo;
-                        let row = `<tr><td>${id}</td><td>${name}</td><td>${brand}</td><td>${colour}</td><td>${fuel}</td><td>${passe}</td><td>${pek}</td><td>${pd}</td><td>${reg}</td></tr>`;
+                        let row = `<tr><td>${carid}</td><td>${name}</td><td>${brand}</td><td>${colour}</td><td>${fuel}</td><td>${passe}</td><td>${pek}</td><td>${pd}</td><td>${reg}</td></tr>`;
                         $("#tblCustomer").append(row);
                     }
                 }
@@ -243,5 +226,8 @@
     }
 
 </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>

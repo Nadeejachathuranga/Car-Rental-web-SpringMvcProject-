@@ -31,4 +31,8 @@ public class carController {
         carService.Delete(carDto);
         return id+" car deleted ";
     }
+    @GetMapping
+    public ResponseUtil getAll(){
+        return new ResponseUtil("Ok","Successfully Load",carService.getAll());
+    }
 }

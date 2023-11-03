@@ -5,6 +5,7 @@
     <title>Title</title>
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
 <div class="container-fluid">
@@ -123,10 +124,92 @@
     </div>
     <!-- // Modal more content -->
 
-</div><!-- container-fluid -->
+    <section class="row">
+        <div class="col-6 col-lg-5 mt-3">
+            <div class="requestBOx">
+                <h3 id="reqId">Request</h3>
+                <div class="images">
+                    <img src="../img/sedan.jpg" width="350px" height="250px" >
+                </div>
+                <div class="bReq">
+                    <h6 id="custId">Customer Id</h6>
+                    <h6 id="cusName">Customer Name </h6>
+                    <h6 id="cusTp">Contact Number </h6>
+                    <h6 id="cusEmail">Email </h6>
+                    <h6 id="lid">Driver Request</h6>
+                    <h6 id="noDay">Request Days</h6>
+                </div>
+                <div class="bInfo">
+                    <h6 id="bvName">BMW 720D</h6>
+                    <h6 id="bPricePerDay">Rs.20000 per day</h6>
+                    <h6 id="bFreeKm">400Km Free </h6>
+                    <h6 id="bMultiple"> 20000*5 </h6>
+                    <h6 id="bAmount"> 100000 </h6>
+                </div>
+                <div class="row">
+                    <button id="GCaccB" type="button" class="btn btn-primary" >
+                        Accept
+                    </button>
+                    <button type="button" class="btn btn-primary" id="GCcanB">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-6 mt-3">
+            <table class="table table-bordered table-hover" id="tb">
+                <thead class="bg-success text-white">
+                <tr>
+                    <th>Name</th>
+                    <th>Brand</th>
+                    <th>Colour</th>
+                    <th>Fuel</th>
+                    <th>Passengers</th>
+                    <th>Price Of Extra Km</th>
+                    <th>Price Per day</th>
+                    <th>Reg.No</th>
+                </tr>
+                </thead>
+                <tbody id="tblCustomer">
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+                </tbody>
+            </table>
+        </div>
+
+    </section>
+
+</div><!-- container-fluid -->
+<script>
+    $("#GCaccB").click(function (){
+       FindGeneralCars();
+    })
+ function FindGeneralCars(){
+        $.ajax({
+           url:BASE_URL+"/car",
+            method:"Get",
+            dataType: "json",
+            success: function (response) {
+                let cars = response.data;
+                for (let i in cars) {
+                    let car = cars[i];
+                    if (car.type=="general") {
+                        let name = car.name;
+                        let brand = car.brand;
+                        let colour = car.color;
+                        let fuel = car.fuel;
+                        let passe = car.noOfPassengers;
+                        let pek = car.priceExtraKm;
+                        let pd = car.rate;
+                        let reg = car.regNo;
+                        let row = `<tr><td>${name}</td><td>${brand}</td><td>${colour}</td><td>${fuel}</td><td>${passe}</td><td>${pek}</td><td>${pd}</td><td>${reg}</td></tr>`;
+                        $("#tblCustomer").append(row);
+                    }
+                }
+
+            },
+        })
+ }
+
+</script>
 </body>
 </html>

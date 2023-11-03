@@ -1,7 +1,9 @@
 package EasyCar.service.serviceImpl;
 
+import EasyCar.dto.rentDetailsDto;
 import EasyCar.dto.rentDto;
 import EasyCar.entity.rent;
+import EasyCar.entity.rentDetails;
 import EasyCar.repo.rentRepo;
 import EasyCar.service.rentService;
 import org.modelmapper.ModelMapper;
@@ -48,4 +50,6 @@ public class rentServiceImpl implements rentService {
         rent byId = rentRepo.findById(map.getRentId()).get();
        return mapper.map(byId,rentDto.class);
     }
+
+
 }

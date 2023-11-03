@@ -1,5 +1,6 @@
 package EasyCar.controller;
 
+import EasyCar.dto.rentDetailsDto;
 import EasyCar.dto.rentDto;
 import EasyCar.service.rentService;
 import EasyCar.util.ResponseUtil;
@@ -35,6 +36,7 @@ public class rentController {
         rentDto byId = rentService.findById(rentDto);
         return new ResponseUtil("Ok", "Successfully Loaded",byId);
     }
+
 
 }
 

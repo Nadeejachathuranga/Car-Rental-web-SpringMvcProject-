@@ -22,12 +22,23 @@
       <div class="card-body">
         <h5 class="card-title">Customer Details</h5>
         <h6 id="cusId">Customer Id</h6>
+        <h6 id="cusName">Customer Name</h6>
+        <h6 id="cusLid">Customer Lid</h6>
+        <h6 id="cusAdd">Customer Address</h6>
+        <h6 id="cusTp">Customer Contact No</h6>
+        <h6 id="cusEm">Customer Email</h6>
       </div>
     </div>
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Vehicle Details</h5>
         <h6 id="carId">Car Id</h6>
+        <h6 id="carName">Car Name</h6>
+        <h6 id="carBrand">Car Brand</h6>
+        <h6 id="carNPS">Passenger Seats</h6>
+        <h6 id="carPrice">Price</h6>
+        <h6 id="carRate">Price Of Extra Km</h6>
+        <h6 id="carREegNo">Car Reg No</h6>
       </div>
     </div>
 
@@ -35,19 +46,104 @@
       <div class="card-body">
         <h5 class="card-title">Rent Details</h5>
           <h6 id="rentId">Rent Id</h6>
+          <h6 id="rentSatus">Status</h6>
+          <h6 id="rentPD">PickUp Day</h6>
+          <h6 id="rentRD">Required Rent Days</h6>
       </div>
     </div>
   </div>
+  <div class="form-group">
+   <h5 id="lblRKm"></h5>
+    <input type="text" class="form-control" id="KmInputTxt" placeholder=" ">
+  </div>
+  <button  id="proceedBtn" type="submit" class="btn btn-primary">Proceed Rent</button>
 </div><!--Container-Fluid-->
 
 <script>
-
+  let carId ;
+  let cusId;
+  let rentId;
+  let rDays;
   const BASE_URL = "http://localhost:8080/BackEnd_war";
 
   $("#checkOutSecButton").click(function (){
-    let rentId=$("#checkOutSecTxt").val();
-   findRent(rentId);
+     rentId=$("#checkOutSecTxt").val();
+    findRent(rentId);
+    findingCustomer(cusId);
+
   });
+
+  $("#proceedBtn").click(function (){
+  let Skm=$("#KmInputTxt").val();
+  let freeKm=120;
+  let paymentId=p111055;
+  let returnDay="Not Yet";
+  let totalKm="No yet";
+    proceedRent(rentId,Skm,freeKm,paymentId,returnDay,rDays,totalKm);
+
+  });
+  function proceedRent(rentId,Skm,freeKm,paymentId,returnDay,rDays,totalKm) {
+    $.ajax({
+      url: BASE_URL + "/rentDetails?rId="+rentId+"&Skm="+Skm+"&Fkm="+freeKm+"&payId="+paymentId+"&reDay="+returnDay+"&toDay="+rDays+"&tKm="+totalKm,
+      method: 'Post',
+      success: function (resp) {
+       let res =resp.state;
+       if (res=="Ok"){
+         alert("Addeed");
+       }
+      }
+    });
+  }
+
+  function  FindingCar(carId){
+
+    $.ajax({
+      url: BASE_URL + "/car?id="+carId,
+      method: 'Get',
+      success: function (resp) {
+        let car = resp.data;
+
+        let id = car.id;
+        let cName = car.name;
+        let cBrand = car.brand;
+        let cNPS = car.noOfPassengers;
+        let cR = car.rate;
+        let cEPK = car.priceExtraKm;
+        let cReg = car.regNo;
+        document.getElementById("carName").innerHTML="Car Name ="+cName;
+        document.getElementById("carBrand").innerHTML="Car Brand ="+cBrand;
+        document.getElementById("carNPS").innerHTML="No Of Passenger ="+cNPS;
+        document.getElementById("carPrice").innerHTML="Price Of Per Day ="+cR;
+        document.getElementById("carRate").innerHTML="Price Of Extra Km ="+cEPK;
+        document.getElementById("carREegNo").innerHTML="reg Number ="+cReg;
+      }
+    });
+
+  }
+
+  function findingCustomer(cusId){
+    $.ajax({
+      url: BASE_URL + "/customer?id="+cusId,
+      method: 'Get',
+      success: function (resp) {
+        let rents = resp.data;
+
+        let id = rents.id;
+        let name = rents.name;
+        let add = rents.address;
+        let lid = rents.lid;
+        let cont = rents.contact;
+        let email = rents.email;
+        document.getElementById("cusName").innerHTML="Customer Name ="+name;
+        document.getElementById("cusLid").innerHTML="License Id ="+lid;
+        document.getElementById("cusTp").innerHTML="Contact Number ="+cont;
+        document.getElementById("cusEm").innerHTML="Email ="+email;
+        document.getElementById("cusAdd").innerHTML="Address ="+add;
+      }
+
+    });
+    FindingCar(carId);
+  }
 function findRent(rentId){
   $.ajax({
     url: BASE_URL + "/rent?id="+rentId,
@@ -55,20 +151,28 @@ function findRent(rentId){
     success: function (resp) {
       let rent = resp.data;
 
-      let id = rent.rentID;
-      let carId = rent.carID;
-      let cusId = rent.cusId;
-      let rDays = rent.days;
+      let id = rent.rentId;
+       carId = rent.carId;
+       cusId = rent.cusId;
+       rDays = rent.days;
       let pDay = rent.pickDay;
       let rStatus = rent.statuss;
-      document.getElementById("cusId").innerHTML=cusId;
-      document.getElementById("carId").innerHTML=carId;
-      document.getElementById("rentId").innerHTML=id;
+      document.getElementById("cusId").innerHTML="Customer Id="+cusId;
+      document.getElementById("carId").innerHTML="Car Id="+carId;
+      document.getElementById("rentId").innerHTML="Rent Id="+id;
+      document.getElementById("rentSatus").innerHTML="Request="+rStatus;
+      document.getElementById("rentPD").innerHTML="PickUp Day="+pDay;
+      document.getElementById("rentRD").innerHTML="Request Days="+rDays;
 
-    }
+      if (rStatus=="Accept"){
 
+        document.getElementById("lblRKm").innerHTML="Start Km Amount";
+      }
+    },
   });
 }
+
+
 </script>
 </body>
 </html>

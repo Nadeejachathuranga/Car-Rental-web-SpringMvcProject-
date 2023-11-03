@@ -2,6 +2,7 @@ package EasyCar.controller;
 
 import EasyCar.dto.carDto;
 import EasyCar.service.carService;
+import EasyCar.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,10 +21,9 @@ public class carController {
         return "car servlet invoked";
     }
     @GetMapping(params = {"id"})
-    carDto getCar(String id){
+    ResponseUtil getCar(String id){
         carDto carDto = new carDto(id);
-        return carService.Find(carDto);
-
+      return  new ResponseUtil("Ok", "Successfully Loaded",carService.Find(carDto));
     }
     @DeleteMapping(params = {"id"})
     public String deleteCar(String id){

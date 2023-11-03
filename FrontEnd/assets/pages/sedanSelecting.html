@@ -132,13 +132,13 @@
                     <img src="../img/sedan.jpg" width="350px" height="250px" >
                 </div>
                 <div class="bReq">
-                    <h5>Available Dates</h5>
-                    <h6 id="custId">Customer Id</h6>
-                    <h6 id="cusName">Customer Name </h6>
-                    <h6 id="cusTp">Contact Number </h6>
-                    <h6 id="cusEmail">Email </h6>
-                    <h6 id="lid">Driver Request</h6>
-                    <h6 id="noDay">Request Days</h6>
+
+                    <h6 id="carId">Customer Id</h6>
+                    <h6 id="carName">Customer Name </h6>
+                    <h6 >"              "      </h6>
+                    <h5>Booking Dates</h5>
+
+                    <h6 id="bookingDays"></h6>
                 </div>
                 <div class="bInfo">
                     <h6 id="bvName">   </h6>
@@ -150,9 +150,6 @@
                 <div class="row">
                     <button id="GCaccB" type="button" class="btn btn-primary" >
                         Accept
-                    </button>
-                    <button type="button" class="btn btn-primary" id="GCcanB">
-                        Cancel
                     </button>
                 </div>
             </div>
@@ -184,9 +181,10 @@
     const BASE_URL = "http://localhost:8080/BackEnd_war";
 
     $("#GCaccB").click(function (){
-       FindGeneralCars();
+     //  FindGeneralCars();
     })
  function FindGeneralCars(){
+     $("#tblCustomer").empty();
         $.ajax({
            url:BASE_URL+"/car",
             method:"Get",
@@ -215,11 +213,33 @@
  }
 
     function selectRow(){
+        let  id;
         $('#tblCustomer>tr').click(function () {
-            id = $(this).children().eq(0).text();
-            document.getElementById("bPricePerDay").innerHTML=carId;
-
+              id = $(this).children().eq(0).text();
+         let  name = $(this).children().eq(1).text();
+            document.getElementById("carId").innerHTML=id;
+            document.getElementById("carName").innerHTML=name;
         })
+        var array=[];
+
+        $.ajax({
+            url: BASE_URL + '/rent?id='+id,
+            method: 'GET',
+            dataType: "json",
+            success: function (response) {
+                let rents = response.data;
+                for (let i in rents) {
+                    let rent = rents[i];
+                    if (rent.statuss=="Accept") {
+                        let days = rent.days;
+                        let pickday = rent.pickDay;
+                        array.push(pickday)
+                    }
+                }
+                console.log(array);
+            },
+        });
+
     }
 
 </script>

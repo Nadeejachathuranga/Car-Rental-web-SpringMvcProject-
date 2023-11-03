@@ -15,4 +15,8 @@ public class rentDetailsDto {
     private String totalKm;
     private String freeKm;
     private String paymentId;
+
+    public rentDetailsDto(String rId) {
+        this.rentId=rId;
+    }
 }

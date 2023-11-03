@@ -4,4 +4,5 @@ import EasyCar.dto.rentDetailsDto;
 
 public interface rentDetailsService {
     rentDetailsDto proceedRent(rentDetailsDto dto);
+    String Deleterent(rentDetailsDto dto);
 }

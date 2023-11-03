@@ -75,12 +75,11 @@
 
   $("#proceedBtn").click(function (){
   let Skm=$("#KmInputTxt").val();
-  let freeKm=120;
-  let paymentId=p111055;
+  let freeKm="120Km";
+  let paymentId="p111055";
   let returnDay="Not Yet";
   let totalKm="No yet";
     proceedRent(rentId,Skm,freeKm,paymentId,returnDay,rDays,totalKm);
-
   });
   function proceedRent(rentId,Skm,freeKm,paymentId,returnDay,rDays,totalKm) {
     $.ajax({

@@ -26,4 +26,11 @@ public class rentDetailsServiceImpl implements rentDetailsService {
         rentDetailsDto map1 = mapper.map(save, rentDetailsDto.class);
         return  map1;
     }
+
+    @Override
+    public String Deleterent(rentDetailsDto dto) {
+        rentDetails map = mapper.map(dto, rentDetails.class);
+        rentDetailsRepo.delete(map);
+        return  dto.getRentId()+"Deleted";
+    }
 }

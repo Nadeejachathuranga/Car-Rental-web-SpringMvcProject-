@@ -16,6 +16,7 @@ public class carDto {
     private String type;
     private String regNo;
     private String priceExtraKm;
+    private String freeKmDay;
     private String transmissionType;
     private String rate;
     private String noOfPassengers;
@@ -25,4 +26,6 @@ public class carDto {
     public carDto(String id) {
         this.id=id;
     }
+
+
 }

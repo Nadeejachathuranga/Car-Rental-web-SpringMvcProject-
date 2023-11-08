@@ -47,22 +47,130 @@
       <div class="card-body">
         <h5 class="card-title">Rent Details</h5>
         <h6 id="rentId">Rent Id</h6>
-        <h6 id="rentSatus">Status</h6>
-        <h6 id="rentPD">PickUp Day</h6>
         <h6 id="rentRD">Required Rent Days</h6>
         <h6 id="rentRD1">Start Km</h6>
         <h6 id="rentRD2">Total Km</h6>
         <h6 id="rentRD3">Free Km</h6>
-        <h6 id="rentRD4">Return</h6>
+        <h6 id="amount">Extra km Amount</h6>
+        <h6 id="total">Total Amount</h6>
 
       </div>
     </div>
   </div>
   <div class="form-group">
     <h5 id="lblRKm"></h5>
-    <input type="text" class="form-control" id="KmInputTxt" placeholder=" ">
+    <input type="text" class="form-control" id="tripKmInputTxt" placeholder="insert  trip km ">
+    <input type="text" class="form-control" id="payIdTxt" placeholder=" payment id">
   </div>
   <button  id="proceedBtn" type="submit" class="btn btn-primary">Proceed Rent</button>
+  <button  id="paymetBtn" type="submit" class="btn btn-primary">Check Payment</button>
 </div><!--Container-Fluid-->
+<script>
+  const BASE_URL = "http://localhost:8080/BackEnd_war";
+let startkm;
+let fkm;
+let CarCOId;
+let CasCOId;
+let price;
+let days;
+var totalkm;
+  var rentCOId;
+
+  $("#paymetBtn").click(function (){
+     totalkm=$("#tripKmInputTxt").val();
+      var km=totalkm-startkm;
+     var finalKm =(km-fkm)*65;
+     var finalamount=finalKm+price*days;
+    document.getElementById("amount").innerHTML="Extra km Amount ="+finalKm;
+    document.getElementById("total").innerHTML="Total Amount ="+finalamount;
+      alert(finalKm)
+
+  })
+
+  $("#checkOutSecButton").click(function (){
+     rentCOId=$("#checkOutSecTxt").val();
+    findRentDe(rentCOId);
+
+  })
+
+  function findRentDe(rentCOId){
+    $.ajax({
+      url: BASE_URL + "/rentDetails?rentId="+rentCOId,
+      method: 'Get',
+      success: function (resp) {
+        let rent = resp.data;
+        id=rent.rentId;
+        startkm=rent.extraDays;
+        days=rent.totalDays;
+        tkm=rent.totalKm;
+        fkm=rent.freeKm;
+        document.getElementById("rentId").innerHTML="rent Id="+id;
+        document.getElementById("rentRD").innerHTML="required days="+days;
+        document.getElementById("rentRD1").innerHTML="Start km="+startkm;
+        document.getElementById("rentRD2").innerHTML="Total Km="+tkm;
+        document.getElementById("rentRD3").innerHTML="free km="+fkm;
+      },
+    });
+    findingCarId(rentCOId);
+  }
+  function findingCarId(rentCOId){
+    $.ajax({
+      url: BASE_URL + "/rent?id="+rentCOId,
+      method: 'Get',
+      success: function (resp) {
+        let car = resp.data;
+        CarCOId=car.carId;
+        CasCOId=car.cusId;
+        document.getElementById("carId").innerHTML="car  Id="+CarCOId;
+        document.getElementById("cusId").innerHTML="free km="+CasCOId;
+      },
+    });
+    FindCar(CarCOId);
+   // FindCas(CasCOId);
+  }
+function FindCar(CarCOId){
+  $.ajax({
+    url: BASE_URL + "/car?id="+CarCOId,
+    method: 'Get',
+    success: function (resp) {
+      let car = resp.data;
+      carname=car.name;
+      brand=car.brand;
+      ps=car.noOfPassengers;
+      price=car.rate;
+     // priceEkm=car.cusId;
+      regno=car.regNo;
+      document.getElementById("carName").innerHTML="car name="+carname;
+      document.getElementById("carBrand").innerHTML="brand="+brand;
+      document.getElementById("carNPS").innerHTML="passenger seat="+ps;
+      document.getElementById("carPrice").innerHTML="day price="+price;
+      document.getElementById("carRate").innerHTML="price Of extra km="+65;
+      document.getElementById("carREegNo").innerHTML="reg no="+regno;
+    },
+  });
+}
+
+
+  $("#proceedBtn").click(function (){
+   //
+   // var finalKm=$("#tripKmInputTxt").val();
+    var payId=$("#payIdTxt").val();
+   completRent(payId);
+  //  alert(finalKm)
+   // alert(payId)
+  })
+  function completRent(payId){
+    $.ajax({
+      url: BASE_URL + "/rentDetails?rId"+rentCOId+"&Skm"+startkm+"&Fkm"+fkm+"&payId"+payId+"&reDay"+finalKm+"&toDay"+days+"&tKm"+totalkm,
+      method: 'Put',
+      success: function (resp) {
+        let res =resp.state;
+        if (res=="Ok"){
+          alert("Success");
+        }
+      }
+    });
+  }
+</script>
 </body>
 </html>

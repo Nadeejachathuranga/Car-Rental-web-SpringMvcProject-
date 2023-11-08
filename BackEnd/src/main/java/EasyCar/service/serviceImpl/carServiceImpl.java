@@ -52,4 +52,10 @@ public class carServiceImpl implements carService {
         }.getType());
     }
 
+    @Override
+    public String findLastId() {
+        String lastCarId = carRepo.getLastCarId();
+        return lastCarId;
+    }
+
 }

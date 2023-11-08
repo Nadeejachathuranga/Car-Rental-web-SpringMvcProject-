@@ -25,4 +25,16 @@ public class rentDetailsController {
         String deleterent = rentService.Deleterent(rdto);
         return new ResponseUtil("Ok","Successfully Loaded",deleterent);
     }
+    @GetMapping(params = {"rentId"})
+    public ResponseUtil FindBbyId(String rentId){
+        rentDetailsDto rentDetailsDto = new rentDetailsDto(rentId);
+        rentDetailsDto find = rentService.Find(rentDetailsDto);
+        return new ResponseUtil("Ok","Successfully Loaded",find);
+    }
+    @PutMapping(params = {"rId","Skm","Fkm","payId","reDay","toDay","tKm"})
+    public ResponseUtil update(String rId, String Skm, String Fkm, String payId, String reDay, String toDay, String tKm){
+        rentDetailsDto rentDetailsDto = new rentDetailsDto(rId,reDay,Skm,toDay,tKm,Fkm,payId);
+        System.out.println("updated");
+        return new ResponseUtil("Ok", "Successfully Loaded",rentService.update(rentDetailsDto));
+    }
 }

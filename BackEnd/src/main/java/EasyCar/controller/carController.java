@@ -13,12 +13,23 @@ public class carController {
     @Autowired
     carService carService;
 
-    @PostMapping(params = {"id","name","brand","type","regNo","priceExtraKm","transmissonType","rate","noOfPassenger","fuel","color"})
-    public String addCar(String id,String name,String brand,String type,String regNo,String priceExtrakm,String transmissonType,
-                         String rate,String noOfPassenger,String fuel,String color){
-        carDto carDto = new carDto(id,name, brand, type, regNo, priceExtrakm, transmissonType, rate, noOfPassenger, fuel, color);
+    @PostMapping(params = {"name","brand","type","regNo","priceExtraKm","transmissonType","rate","noOfPassenger","fuel","color","freeKmDay"})
+    public ResponseUtil addCar(String name,String brand,String type,String regNo,String priceExtraKm,String transmissonType,
+                         String rate,String noOfPassenger,String fuel,String color,String freeKmDay){
+        
+        String returnId = carService.findLastId();
+        String lsCarId=returnId;
+        String[] Auto = lsCarId.split("car");
+        int AutoId = Integer.parseInt(Auto[01]);
+        AutoId += 1;
+       String id = "car" + AutoId;
+        carDto carDto = new carDto(id, name, brand, type, regNo, priceExtraKm, freeKmDay, transmissonType, rate, noOfPassenger, fuel, color);
+        System.out.println(id);
+        System.out.println("received");
+        System.out.println(carDto.getPriceExtraKm());
+        System.out.println(carDto.getFreeKmDay());
         carService.AddCar(carDto);
-        return "car servlet invoked";
+        return new ResponseUtil("Ok", "Successfully Loaded",id);
     }
     @GetMapping(params = {"id"})
     ResponseUtil getCar(String id){

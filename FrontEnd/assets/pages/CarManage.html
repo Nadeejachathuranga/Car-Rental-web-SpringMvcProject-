@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <button type="button" class="btn btn-primary" id="addCarBtn" data-toggle="modal" data-target="#carInertModel"> add cars</button>
+</div><!--container-fluid-->
+
+
+<div class="modal fade" tabindex="-1" id="carInertModel" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Registration Form </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Modal Body -->
+                <form id="regForm">
+                    <div class="form-group">
+                        <label for="nameInputTxt">Name</label>
+                        <input type="text" class="form-control" id="nameInputTxt" placeholder="Insert Name">
+                    </div>
+                    <div class="form-group">
+                    <label for="nameInputTxt">Brand</label>
+                    <input type="text" class="form-control" id="brandInputTxt" placeholder="Insert Brand">
+                    </div>
+                    <div class="form-group">
+                        <label for="nameInputTxt">Register Number</label>
+                        <input type="text" class="form-control" id="RegNoInputTxt" placeholder="Insert Register Number">
+                    </div>
+                    <div class="form-group">
+                        <label for="nameInputTxt">Rate</label>
+                        <input type="text" class="form-control" id="rateInputTxt" placeholder="Insert Rate">
+                    </div>
+                    <div class="form-group">
+                        <label for="nameInputTxt">Price Of Extra km</label>
+                        <input type="text" class="form-control" id="priceExtraKmInputTxt" placeholder="Insert Price Of Extra km">
+                    </div>
+                    <div class="form-group">
+                        <label for="nameInputTxt">Free Km For Day</label>
+                        <input type="text" class="form-control" id="FreeKmInputTxt" placeholder="Insert Free Km For Day">
+                    </div>
+                    <div class="form-group">
+                        <label for="nameInputTxt">Vehicle Type</label>
+                        <input type="text" class="form-control" id="vehicleTypeInputTxt" placeholder="Insert Vehicle Type">
+                    </div>
+                    <div class="form-group">
+                        <label for="nameInputTxt">Transmission Type</label>
+                        <input type="text" class="form-control" id="transmissionInputTxt" placeholder="Insert Transmission Type">
+                    </div>
+                    <div class="form-group">
+                        <label for="nameInputTxt">Number of Passenger</label>
+                        <input type="text" class="form-control" id="noPassengerInputTxt" placeholder="Insert Number of Passenger">
+                    </div>
+                    <div class="form-group">
+                        <label for="nameInputTxt">Colour</label>
+                        <input type="text" class="form-control" id="colourInputTxt" placeholder="Insert Colour">
+                    </div>
+                    <div class="form-group">
+                        <label for="nameInputTxt">Fuel Type</label>
+                        <input type="text" class="form-control" id="fuelInputTxt" placeholder="Insert Fuel">
+                    </div>
+                    <button  id="carInertBtn" type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <p> </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- // Modal more content -->
+<script>
+    const BASE_URL = "http://localhost:8080/BackEnd_war";
+
+    $("#carInertBtn").click(function (){
+        var name=$("#nameInputTxt").val();
+        var brand=$("#brandInputTxt").val();
+        var regNo=$("#RegNoInputTxt").val();
+        var rate=$("#rateInputTxt").val();
+        var priceEDay=$("#priceExtraKmInputTxt").val();
+        var freeKm=$("#FreeKmInputTxt").val();
+        var type=$("#vehicleTypeInputTxt").val();
+        var transmission=$("#transmissionInputTxt").val();
+        var noPassenger=$("#noPassengerInputTxt").val();
+        var colour=$("#colourInputTxt").val();
+        var fuel=$("#fuelInputTxt").val();
+        insertCar(name,brand,regNo,rate,priceEDay,freeKm,type,transmission,noPassenger,colour,fuel);
+    });
+    function insertCar(name,brand,regNo,rate,priceEDay,freeKm,type,transmission,noPassenger,colour,fuel){
+        $.ajax({
+            url:BASE_URL+"/car?name="+name+"&brand="+brand+"&type="+type+"&regNo="+regNo+"&priceExtraKm="+priceEDay+"&transmissonType="+transmission+"&rate="+rate+"&noOfPassenger="+noPassenger+"&fuel="+fuel+"&color="+colour+"&freeKmDay="+freeKm,
+            method:'POST',
+            success: function (resp) {
+                alert(resp);
+                let res=resp.state;
+                if (res=="Ok"){
+                    alert("Added");
+                }
+            },
+            error: function (error) {
+                alert("error");
+
+            }
+        });
+    };
+
+</script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

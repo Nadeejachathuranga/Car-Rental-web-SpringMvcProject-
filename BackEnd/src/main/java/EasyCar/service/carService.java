@@ -10,4 +10,5 @@ public interface carService {
     void Delete(carDto dto);
     carDto Find(carDto dto);
     List<carDto> getAll();
+    String findLastId();
 }

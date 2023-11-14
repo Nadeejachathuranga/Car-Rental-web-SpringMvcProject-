@@ -35,6 +35,50 @@
         </div>
     </div>
 
+    <div class="carSearchingArea">
+        <button type="button" class="btn btn-primary" id="getAllBtn" data-toggle="modal" data-target="#testMode" >All Cars Show</button>
+        <div class="form-group">
+        <input type="text" class="form-control" id="searchIdTxt" placeholder="Insert Id">
+        </div>
+        <div class="searchBtn">
+            <button type="button" class="btn btn-primary" id="searchCarBtn" >Search</button>
+        </div>
+        <div class="resultArea">
+            <div class="reFirstBox">
+             <label >ID</label>
+            <h6 id="txtCarID"></h6>
+                <label >NAME</label>
+                <h6 id="txtCarName"></h6>
+                <label >BRAND</label>
+                <h6 id="txtCarBrand"></h6>
+                <label >COLOUR</label>
+                <h6 id="txtCarColour"></h6>
+                <label >FUEL</label>
+                <h6 id="txtCarFuel"></h6>
+                <label >PASSENGER SEAT</label>
+                <h6 id="txtCarPassengerSeat"></h6>
+            </div>
+            <div class="reSecondBox">
+                <label >PRICE OF EXTRA KM</label>
+                <h6 id="txtCarPoek"></h6>
+                <label >RATE</label>
+                <h6 id="txtCarRate"></h6>
+                <label >REGISTER NUMBER</label>
+                <h6 id="txtCarReg"></h6>
+                <label >TRANSMISSION TYPE</label>
+                <h6 id="txtCarTrans"></h6>
+                <label >TYPE</label>
+                <h6 id="txtCarType"></h6>
+                <label >FREE KM OF RENT</label>
+                <h6 id="txtCarFkor"></h6>
+            </div>
+        </div>
+        <div class="btnBox">
+            <button type="button" class="btn btn-primary" id="carUpdateBtn" >Update</button>
+            <button type="button" class="btn btn-primary" id="DeleteBTN" data-toggle="modal" data-target="#carDeletetModel" >Delete</button>
+        </div>
+    </div>
+
     <div class="carManageFirstBox"id="carManageFirstBox">
         <div class="leftBox" id="leftBox">
 
@@ -69,11 +113,55 @@
 
 </div><!--container-fluid-->
 
+
+<div class="modal fade" tabindex="-1" id="testMode" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Are You Sure! </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Modal Body -->
+                <div class="col-6 col-lg-6 mt-3">
+                    <table class="table table-bordered table-hover" style="height: 500px" id="testtbCarManage">
+                        <thead class="bg-success text-white">
+                        <tr>
+                            <th>CarId</th>
+                            <th>Name</th>
+                            <th>Brand</th>
+                            <th>Colour</th>
+                            <th>Fuel</th>
+                            <th>Passenger</th>
+                            <th>ExtraKmPrice</th>
+                            <th>Rate</th>
+                            <th>RegNo</th>
+                            <th>Transmission</th>
+                            <th>Type</th>
+                            <th>FreeKm</th>
+                        </tr>
+                        </thead>
+                        <tbody id="testtblAllCar">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p> </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- // Modal more content -->
+
 <div class="modal fade" tabindex="-1" id="carDeletetModel" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Delete Form </h5>
+                <h5 class="modal-title">Are You Sure! </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -81,10 +169,6 @@
             <div class="modal-body">
                 <!-- Modal Body -->
                 <form id="carDeleteForm">
-                    <div class="form-group">
-                        <label for="nameInputTxt">Name</label>
-                        <input type="text" class="form-control" id="idInputTxt" placeholder="Insert Id">
-                    </div>
                     <button  id="carDeletebtn" type="submit" class="btn btn-primary">Delete</button>
                 </form>
             </div>
@@ -163,6 +247,7 @@
 </div>
 <!-- // Modal more content -->
 <script>
+    let searchCarID;
     const BASE_URL = "http://localhost:8080/BackEnd_war";
 
     $("#carInertBtn").click(function (){
@@ -235,19 +320,59 @@
     }
 
     $("#deleteCarBtn").click(function (){
-        
         $.ajax({
-            url: BASE_URL + "/car?id="+id,
+            url: BASE_URL + "/car?id="+searchCarID,
             method: 'DELETE',
             success: function (resp) {
-
             },
             error: function (error) {
-
             }
         });
         loadAllCars();
     })
+
+
+
+    $("#searchCarBtn").click(function (){
+         searchCarID=$("#searchIdTxt").val()
+        SearchCar(searchCarID);
+    })
+    function SearchCar(searchCarID){
+        $.ajax({
+            url: BASE_URL + "/car?id="+searchCarID,
+            method: 'GET',
+            success: function (resp) {
+                let car=resp.data;
+                let carid=car.id;
+                let name = car.name;
+                let brand = car.brand;
+                let colour = car.color;
+                let fuel = car.fuel;
+                let passe = car.noOfPassengers;
+                let pek = car.priceExtraKm;
+                let rate = car.rate;
+                let reg = car.regNo;
+                let transtype = car.transmissionType;
+                let type = car.type;
+                let freeKm = car.freeKmDay;
+                document.getElementById("txtCarID").innerHTML=carid;
+                document.getElementById("txtCarName").innerHTML=name;
+                document.getElementById("txtCarBrand").innerHTML=brand;
+                document.getElementById("txtCarColour").innerHTML=colour;
+                document.getElementById("txtCarFuel").innerHTML=fuel;
+                document.getElementById("txtCarPassengerSeat").innerHTML=passe;
+                document.getElementById("txtCarPoek").innerHTML=pek;
+                document.getElementById("txtCarRate").innerHTML=rate;
+                document.getElementById("txtCarReg").innerHTML=reg;
+                document.getElementById("txtCarTrans").innerHTML=transtype;
+                document.getElementById("txtCarType").innerHTML=type;
+                document.getElementById("txtCarFkor").innerHTML=freeKm;
+            },
+            error: function (error) {
+
+            }
+        })
+    }
 
 </script>
 

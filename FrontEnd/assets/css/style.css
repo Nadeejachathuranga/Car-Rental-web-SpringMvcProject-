@@ -84,3 +84,35 @@
     top: 0px;
     margin-left: 375px;
 }
+ #searchIdTxt{
+   width: 550px;
+     height: 42px;
+     border-radius: 20px;
+     margin-left: 250px;
+}
+ #searchCarBtn{
+     position: absolute;
+     margin-left: 723px;
+     top: 268px;
+     border-radius: 40px;
+ }
+ .carSearchingArea{
+     margin-left: 50px;
+     margin-top: 50px;
+ }
+.resultArea{
+    position: relative;
+}
+.reFirstBox{
+}
+.reSecondBox{
+    position: absolute;
+    margin-left: 650px;
+    top: 0px;
+}
+#getAllBtn{
+    position: absolute;
+    margin-left: 950px;
+    top: 270px;
+    width: 160px;
+}

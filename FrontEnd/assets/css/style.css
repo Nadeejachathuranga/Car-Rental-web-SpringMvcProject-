@@ -69,3 +69,18 @@
 .rcoBx{
     border: #062c33 solid 2px;
 }
+.carManageFirstBox{
+    width: 1300px;
+    position: relative;
+}
+.leftBox{
+    width: 500px;
+    height: 500px;
+}
+.rightBox{
+    position: absolute;
+    width: 800px;
+    height: 500px;
+    top: 0px;
+    margin-left: 375px;
+}

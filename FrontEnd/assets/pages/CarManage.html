@@ -4,13 +4,97 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
-<body>
+<body class="body" onload="loadAllCars();">
 <div class="container-fluid">
-    <button type="button" class="btn btn-primary" id="addCarBtn" data-toggle="modal" data-target="#carInertModel"> add cars</button>
+    <div class="card-deck">
+        <div class="card">
+            <div class="card-body">
+                <h1>Are you want add new car?</h1>
+                <h5> click this button</h5>
+                <button type="button" class="btn btn-primary" id="addCarBtn" data-toggle="modal" data-target="#carInertModel"> add cars</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h1>Are you want delete  car?</h1>
+                <h5> click this button</h5>
+                <button type="button" class="btn btn-primary" id="deleteCarBtn"  data-toggle="modal" data-target="#carDeletetModel"> delete car</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h1>Are you want update  car?</h1>
+                <h5> click this button</h5>
+                <button type="button" class="btn btn-primary" id="updateCarBtn" > update car</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="carManageFirstBox"id="carManageFirstBox">
+        <div class="leftBox" id="leftBox">
+
+            <h1 id="carId">id</h1>
+        </div><!--leftBox-->
+        <div class="rightBox" id="rightBox">
+            <div class="col-6 col-lg-6 mt-3">
+                <table class="table table-bordered table-hover" style="height: 500px" id="tbCarManage">
+                    <thead class="bg-success text-white">
+                    <tr>
+                        <th>CarId</th>
+                        <th>Name</th>
+                        <th>Brand</th>
+                        <th>Colour</th>
+                        <th>Fuel</th>
+                        <th>Passenger</th>
+                        <th>ExtraKmPrice</th>
+                        <th>Rate</th>
+                        <th>RegNo</th>
+                        <th>Transmission</th>
+                        <th>Type</th>
+                        <th>FreeKm</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tblAllCar">
+
+                    </tbody>
+                </table>
+            </div>
+        </div><!--rightBox-->
+    </div><!--carManageFirstBox-->
+
 </div><!--container-fluid-->
 
+<div class="modal fade" tabindex="-1" id="carDeletetModel" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Form </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Modal Body -->
+                <form id="carDeleteForm">
+                    <div class="form-group">
+                        <label for="nameInputTxt">Name</label>
+                        <input type="text" class="form-control" id="idInputTxt" placeholder="Insert Id">
+                    </div>
+                    <button  id="carDeletebtn" type="submit" class="btn btn-primary">Delete</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <p> </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- // Modal more content -->
 
 <div class="modal fade" tabindex="-1" id="carInertModel" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -111,7 +195,59 @@
 
             }
         });
+        loadAllCars();
     };
+    function loadAllCars(){
+        $("#tblAllCar").empty();
+        $.ajax({
+            url:BASE_URL+"/car",
+            method:"Get",
+            dataType: "json",
+            success: function (response) {
+                let cars = response.data;
+                for (let i in cars) {
+                    let car = cars[i];
+                        let carid=car.id;
+                        let name = car.name;
+                        let brand = car.brand;
+                        let colour = car.color;
+                        let fuel = car.fuel;
+                        let passe = car.noOfPassengers;
+                        let pek = car.priceExtraKm;
+                        let rate = car.rate;
+                        let reg = car.regNo;
+                        let transtype = car.transmissionType;
+                        let type = car.type;
+                        let freeKm = car.freeKmDay;
+                        let row = `<tr><td>${carid}</td><td>${name}</td><td>${brand}</td><td>${colour}</td><td>${fuel}</td><td>${passe}</td><td>${pek}</td><td>${rate}</td><td>${reg}</td><td>${transtype}</td><td>${type}</td><td>${freeKm}</td></tr>`;
+                        $("#tblAllCar").append(row);
+                }
+                selectRow();
+            },
+        })
+    }
+    let id;
+    function selectRow(){
+        $('#tblAllCar>tr').click(function () {
+            id = $(this).children().eq(0).text();
+            document.getElementById("carId").innerHTML=id;
+        })
+    }
+
+    $("#deleteCarBtn").click(function (){
+        
+        $.ajax({
+            url: BASE_URL + "/car?id="+id,
+            method: 'DELETE',
+            success: function (resp) {
+
+            },
+            error: function (error) {
+
+            }
+        });
+        loadAllCars();
+    })
 
 </script>
 

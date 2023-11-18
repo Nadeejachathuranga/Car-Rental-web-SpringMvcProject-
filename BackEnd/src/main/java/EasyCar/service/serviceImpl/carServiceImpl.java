@@ -29,7 +29,8 @@ public class carServiceImpl implements carService {
 
     @Override
     public void Update(carDto dto) {
-
+        car map = mapper.map(dto, car.class);
+        carRepo.save(map);
     }
 
     @Override

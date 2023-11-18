@@ -85,20 +85,22 @@
     margin-left: 375px;
 }
  #searchIdTxt{
+     margin: 10px;
    width: 550px;
      height: 42px;
      border-radius: 20px;
      margin-left: 250px;
+
 }
  #searchCarBtn{
-     position: absolute;
+     position: relative;
      margin-left: 723px;
-     top: 268px;
+     top: -58px;
      border-radius: 40px;
  }
  .carSearchingArea{
      margin-left: 50px;
-     margin-top: 50px;
+
  }
 .resultArea{
     position: relative;
@@ -111,8 +113,57 @@
     top: 0px;
 }
 #getAllBtn{
-    position: absolute;
+    position: relative;
     margin-left: 950px;
-    top: 270px;
+    top: 50px;
     width: 160px;
+}
+.sectionTwo{
+    margin: 10px;
+    background-color: #f5f6fa;
+
+}
+.sectionOne{
+    margin: 10px;
+    background-color: #f5f6fa;
+}
+#DeleteBTN {
+    margin-bottom: 10px;
+}
+#carUpdateBtn{
+    margin-bottom: 10px;
+}
+
+.cardBox{
+    background-color: white;
+    height: 180px;
+    margin: 15px;
+    width: 600px;
+    border-radius: 20px;
+}
+
+.DriverAddBox{
+    width: 600px;
+    height: 150px;
+    border: solid 1px black;
+    background-color: #f5f6fa;
+}
+.DriverThirdBox{
+    border: solid 1px black;
+    background-color: #f5f6fa;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#driverSearchIdTxt{
+    margin: 10px;
+    width: 550px;
+    height: 42px;
+    border-radius: 20px;
+    margin-left: 250px;
+}
+#driverSearchBtn{
+    position: relative;
+    margin-left: 723px;
+    top: -58px;
+    border-radius: 40px;
 }

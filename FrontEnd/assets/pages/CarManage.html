@@ -9,8 +9,29 @@
 </head>
 <body class="body" onload="loadAllCars();">
 <div class="container-fluid">
+
+    <div class="sectionFirst">
+        <div class="card-deck">
+            <div class="card">
+                <div class="card-body">
+                    <h1>Are you want add new car?</h1>
+                    <h5> click this button</h5>
+
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h1>Are you want add new car?</h1>
+                    <h5> click this button</h5>
+                </div>
+            </div>
+
+        </div>
+    </div><!--sectionFirst-->
+
+    <div class="sectionOne">
     <div class="card-deck">
-        <div class="card">
+        <div class="cardBox">
             <div class="card-body">
                 <h1>Are you want add new car?</h1>
                 <h5> click this button</h5>
@@ -18,11 +39,10 @@
             </div>
         </div>
 
-        <div class="card">
+        <!--<div class="card">
             <div class="card-body">
                 <h1>Are you want delete  car?</h1>
                 <h5> click this button</h5>
-                <button type="button" class="btn btn-primary" id="deleteCarBtn"  data-toggle="modal" data-target="#carDeletetModel"> delete car</button>
             </div>
         </div>
 
@@ -30,11 +50,12 @@
             <div class="card-body">
                 <h1>Are you want update  car?</h1>
                 <h5> click this button</h5>
-                <button type="button" class="btn btn-primary" id="updateCarBtn" > update car</button>
             </div>
-        </div>
-    </div>
+        </div>-->
+    </div><!--cards-->
+    </div><!--sectionOne-->
 
+    <div class="sectionTwo">
     <div class="carSearchingArea">
         <button type="button" class="btn btn-primary" id="getAllBtn" data-toggle="modal" data-target="#testMode" >All Cars Show</button>
         <div class="form-group">
@@ -74,10 +95,11 @@
             </div>
         </div>
         <div class="btnBox">
-            <button type="button" class="btn btn-primary" id="carUpdateBtn" >Update</button>
+            <button type="button" class="btn btn-primary" id="carUpdateBtn" data-toggle="modal" data-target="#carUpdateModel" >Update</button>
             <button type="button" class="btn btn-primary" id="DeleteBTN" data-toggle="modal" data-target="#carDeletetModel" >Delete</button>
         </div>
-    </div>
+    </div><!--carSearchingArea-->
+    </div><!--sectionTwo-->
 
     <div class="carManageFirstBox"id="carManageFirstBox">
         <div class="leftBox" id="leftBox">
@@ -110,7 +132,6 @@
             </div>
         </div><!--rightBox-->
     </div><!--carManageFirstBox-->
-
 </div><!--container-fluid-->
 
 
@@ -162,12 +183,15 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Are You Sure! </h5>
+
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <!-- Modal Body -->
+                <h6 id="deleteCarID"></h6>
+
                 <form id="carDeleteForm">
                     <button  id="carDeletebtn" type="submit" class="btn btn-primary">Delete</button>
                 </form>
@@ -179,6 +203,75 @@
     </div>
 </div>
 <!-- // Modal more content -->
+
+
+<!-- // Modal Update content -->
+<div class="modal fade" tabindex="-1" id="carUpdateModel" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Update Form </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Modal Body -->
+                <form id="carUpdateForm">
+                    <h3 id="carUpdateFormID">Car Id</h3>
+                    <div class="form-group">
+                        <label for="nameInputTxt">Name</label>
+                        <input type="text" class="form-control" id="nameUpdateTxt" placeholder="Insert Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="nameInputTxt">Brand</label>
+                        <input type="text" class="form-control" id="brandUpdateTxt" placeholder="Insert Brand">
+                    </div>
+                    <div class="form-group">
+                        <label for="nameInputTxt">Register Number</label>
+                        <input type="text" class="form-control" id="RegNoUpdateTxt" placeholder="Insert Register Number">
+                    </div>
+                    <div class="form-group">
+                        <label for="nameInputTxt">Rate</label>
+                        <input type="text" class="form-control" id="rateUpdateTxt" placeholder="Insert Rate">
+                    </div>
+                    <div class="form-group">
+                        <label for="nameInputTxt">Price Of Extra km</label>
+                        <input type="text" class="form-control" id="priceExtraKmUpdateTxt" placeholder="Insert Price Of Extra km">
+                    </div>
+                    <div class="form-group">
+                        <label for="nameInputTxt">Free Km For Day</label>
+                        <input type="text" class="form-control" id="FreeKmUpdateTxt" placeholder="Insert Free Km For Day">
+                    </div>
+                    <div class="form-group">
+                        <label for="nameInputTxt">Vehicle Type</label>
+                        <input type="text" class="form-control" id="vehicleTypeUpdateTxt" placeholder="Insert Vehicle Type">
+                    </div>
+                    <div class="form-group">
+                        <label for="nameInputTxt">Transmission Type</label>
+                        <input type="text" class="form-control" id="transmissionUpdateTxt" placeholder="Insert Transmission Type">
+                    </div>
+                    <div class="form-group">
+                        <label for="nameInputTxt">Number of Passenger</label>
+                        <input type="text" class="form-control" id="noPassengerUpdateTxt" placeholder="Insert Number of Passenger">
+                    </div>
+                    <div class="form-group">
+                        <label for="nameInputTxt">Colour</label>
+                        <input type="text" class="form-control" id="colourUpdateTxt" placeholder="Insert Colour">
+                    </div>
+                    <div class="form-group">
+                        <label for="nameInputTxt">Fuel Type</label>
+                        <input type="text" class="form-control" id="fuelUpdateTxt" placeholder="Insert Fuel">
+                    </div>
+                    <button  id="carFinalUpdateBtn" type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <p> </p>
+            </div>
+        </div>
+    </div>
+</div><!-- // Modal Update content -->
 
 <div class="modal fade" tabindex="-1" id="carInertModel" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -250,6 +343,65 @@
     let searchCarID;
     const BASE_URL = "http://localhost:8080/BackEnd_war";
 
+    $("#DeleteBTN").click(function (){
+        document.getElementById("deleteCarID").innerHTML = searchCarID;
+    })
+
+    $("#carFinalUpdateBtn").click(function (){
+
+        var id=document.getElementById("carUpdateFormID").innerHTML;
+        var names=$("#nameUpdateTxt").val()
+        var brand=$("#brandUpdateTxt").val()
+        var colour=$("#colourUpdateTxt").val()
+        var fuel=$("#fuelUpdateTxt").val()
+        var nOPS=$("#noPassengerUpdateTxt").val()
+        var pOEK=$("#priceExtraKmUpdateTxt").val()
+        var rate=$("#rateUpdateTxt").val()
+        var regNo=$("#RegNoUpdateTxt").val()
+        var tranT=$("#transmissionUpdateTxt").val()
+        var type=$("#vehicleTypeUpdateTxt").val()
+        var freeKm=$("#FreeKmUpdateTxt").val()
+
+        carInfoUpdate(id,names,brand,colour,fuel,nOPS,pOEK,rate,regNo,tranT,type,freeKm);
+    })
+    function carInfoUpdate(id,names,brand,colour,fuel,nOPS,pOEK,rate,regNo,tranT,type,freeKm){
+        alert("carInfoUpdate")
+        $.ajax({
+            url:BASE_URL+"/car?id="+id+"&name="+names+"&brand="+brand+"&type="+type+"&regNo="+regNo+"&priceExtraKm="+pOEK+"&transmissonType="+tranT+"&rate="+rate+"&noOfPassenger="+nOPS+"&fuel="+fuel+"&color="+colour+"&freeKmDay="+freeKm,
+            method:'PUT',
+            success: function (resp) {
+                alert(resp);
+                let res=resp.state;
+                if (res=="Ok"){
+                    alert("Updated");
+                }
+            },
+            error: function (error) {
+                alert("error");
+
+            }
+        });
+    }
+
+    $("#carUpdateBtn").click(function (){
+        if (searchCarID==null){
+            alert("Please First Of All Search The Car ");
+        }else {
+            document.getElementById("carUpdateFormID").innerHTML = searchCarID;
+            var name=$("#nameUpdateTxt").val(document.getElementById("txtCarName").innerHTML);
+            var brand=$("#brandUpdateTxt").val( document.getElementById("txtCarBrand").innerHTML);
+            var colour=$("#colourUpdateTxt").val( document.getElementById("txtCarColour").innerHTML);
+            var fuel=$("#fuelUpdateTxt").val( document.getElementById("txtCarFuel").innerHTML);
+            var nOPS=$("#noPassengerUpdateTxt").val( document.getElementById("txtCarPassengerSeat").innerHTML);
+            var pOEK=$("#priceExtraKmUpdateTxt").val( document.getElementById("txtCarPoek").innerHTML);
+            var rate=$("#rateUpdateTxt").val(document.getElementById("txtCarRate").innerHTML);
+            var regNo=$("#RegNoUpdateTxt").val(document.getElementById("txtCarReg").innerHTML);
+            var TranT=$("#transmissionUpdateTxt").val(document.getElementById("txtCarTrans").innerHTML);
+            var type=$("#vehicleTypeUpdateTxt").val(document.getElementById("txtCarType").innerHTML);
+            var FreeKm=$("#FreeKmUpdateTxt").val(document.getElementById("txtCarFkor").innerHTML);
+        }
+    });
+
     $("#carInertBtn").click(function (){
         var name=$("#nameInputTxt").val();
         var brand=$("#brandInputTxt").val();
@@ -319,9 +471,10 @@
         })
     }
 
-    $("#deleteCarBtn").click(function (){
+    $("#carDeletebtn").click(function (){
+        var id= document.getElementById("deleteCarID").innerHTML;
         $.ajax({
-            url: BASE_URL + "/car?id="+searchCarID,
+            url: BASE_URL+"/car?id="+id,
             method: 'DELETE',
             success: function (resp) {
             },

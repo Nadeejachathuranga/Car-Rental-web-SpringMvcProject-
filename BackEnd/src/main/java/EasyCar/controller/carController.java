@@ -13,6 +13,15 @@ public class carController {
     @Autowired
     carService carService;
 
+    @PutMapping(params ={"id","name","brand","type","regNo","priceExtraKm","transmissonType","rate","noOfPassenger","fuel","color","freeKmDay"})
+    public ResponseUtil UpdateCar(String id,String name,String brand,String type,String regNo,String priceExtraKm,String transmissonType,
+                                  String rate,String noOfPassenger,String fuel,String color,String freeKmDay){
+        carDto carDto = new carDto(id, name, brand, type, regNo, priceExtraKm, freeKmDay, transmissonType, rate, noOfPassenger, fuel, color);
+        carService.Update(carDto);
+        System.out.println("hey i am in Update method");
+        return new ResponseUtil("Ok", "Successfully Updated",id);
+    }
+
     @PostMapping(params = {"name","brand","type","regNo","priceExtraKm","transmissonType","rate","noOfPassenger","fuel","color","freeKmDay"})
     public ResponseUtil addCar(String name,String brand,String type,String regNo,String priceExtraKm,String transmissonType,
                          String rate,String noOfPassenger,String fuel,String color,String freeKmDay){
@@ -38,6 +47,7 @@ public class carController {
     }
     @DeleteMapping(params = {"id"})
     public String deleteCar(String id){
+        System.out.println("i am In delete ");
         carDto carDto = new carDto(id);
         carService.Delete(carDto);
         return id+" car deleted ";

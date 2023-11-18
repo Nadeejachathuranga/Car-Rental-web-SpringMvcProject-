@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+
+
+    <div class="DriverFirstBox">
+        <div class="card-deck">
+            <div class="card">
+                <div class="card-body">
+                    <h1>Are you want add new car?</h1>
+                    <h5> click this button</h5>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h1>Are you want add new car?</h1>
+                    <h5> click this button</h5>
+                </div>
+            </div>
+        </div>
+    </div><!--DriverFirstBox-->
+
+
+    <div class="DriverSecondBox">
+        <div class="DriverAddBox">
+            <label > FREE KM OF RENT</label>
+            <button type="button" class="btn btn-primary" id="addDriverBtn" data-toggle="modal" data-target="#DriverAddModel" >Add driver +</button>
+        </div><!--DriverAddBox-->
+    </div><!--DriverSecondBox-->
+
+
+    <div class="DriverThirdBox">
+        <div class="form-group">
+            <input type="text" class="form-control" id="driverSearchIdTxt" placeholder="Insert Id">
+        </div>
+        <div class="driverSearchBtn">
+            <button type="button" class="btn btn-primary" id="driverSearchBtn" >Search</button>
+        </div>
+        <div class="ResultArea">
+            <label >LICENSE ID</label>
+            <h6 id="txtLicenseId"></h6>
+            <label >NAME</label>
+            <h6 id="txtDName"></h6>
+            <label >CONTACT</label>
+            <h6 id="txtDContact"></h6>
+            <label >ADDRESS</label>
+            <h6 id="txtDAddress"></h6>
+        </div>
+        <button type="button" class="btn btn-primary" id="driverUpdateBtn" data-toggle="modal" data-target="#DriverUpdateModel" >Update</button>
+        <button type="button" class="btn btn-primary" id="driverDeleteBTN" data-toggle="modal" data-target="#DriverDeleteModel" >Delete</button>
+    </div><!--DriverThirdBox-->
+
+</div><!--container-fluid-->
+
+<!-- // Modal Add Driver content -->
+<div class="modal fade" tabindex="-1" id="DriverAddModel" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Driver Add Form </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Modal Body -->
+                <form id="driverAddForm">
+                    <div class="form-group">
+                        <label for="licenseIDInputTxt">License Id</label>
+                        <input type="text" class="form-control" id="licenseIDInputTxt" placeholder="Insert License Id">
+                    </div>
+                    <div class="form-group">
+                        <label >Name</label>
+                        <input type="text" class="form-control" id="nameInputTxt" placeholder="Insert Name">
+                    </div>
+                    <div class="form-group">
+                        <label >Contact Number</label>
+                        <input type="text" class="form-control" id="contactInputTxt" placeholder="Insert Contact Number">
+                    </div>
+                    <div class="form-group">
+                        <label >Address</label>
+                        <input type="text" class="form-control" id="addressInputTxt" placeholder="Insert Address">
+                    </div>
+
+                    <button  id="driverSaveBtn" type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <p> </p>
+            </div>
+        </div>
+    </div>
+</div><!-- // Modal Add Driver content -->
+
+<!-- // Modal Update Driver content -->
+<div class="modal fade" tabindex="-1" id="DriverUpdateModel" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Driver Info Update Form </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Modal Body -->
+                <form id="driverUpdateForm">
+                    <h5 id="IdUpdateTxt"></h5>
+                    <div class="form-group">
+                        <label for="licenseIDInputTxt">License Id</label>
+                        <input type="text" class="form-control" id="licenseIDUpdateTxt" placeholder="Insert License Id">
+                    </div>
+                    <div class="form-group">
+                        <label >Name</label>
+                        <input type="text" class="form-control" id="nameUpdateTxt" placeholder="Insert Name">
+                    </div>
+                    <div class="form-group">
+                        <label >Contact Number</label>
+                        <input type="text" class="form-control" id="contactUpdateTxt" placeholder="Insert Contact Number">
+                    </div>
+                    <div class="form-group">
+                        <label >Address</label>
+                        <input type="text" class="form-control" id="addressUpdateTxt" placeholder="Insert Address">
+                    </div>
+
+                    <button  id="FinaldriverUpdateBtn" type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <p> </p>
+            </div>
+        </div>
+    </div>
+</div><!-- // Modal Update Driver content -->
+
+<!-- // Modal Update Driver content -->
+<div class="modal fade" tabindex="-1" id="DriverDeleteModel" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Driver Delete Conformation </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Modal Body -->
+                    <h5 id="IdDeleteTxt"></h5>
+                    <button  id="FinalDriverDeleteBtn" type="submit" class="btn btn-primary">Delete</button>
+            </div>
+            <div class="modal-footer">
+                <p> </p>
+            </div>
+        </div>
+    </div>
+</div><!-- // Modal Update Driver content -->
+<script>
+    const BASE_URL = "http://localhost:8080/BackEnd_war";
+    var searchId
+
+    $("#driverDeleteBTN").click(function (){
+        var id=document.getElementById("IdDeleteTxt").innerHTML=searchId;
+})
+    $("#FinalDriverDeleteBtn").click(function (){
+        var id=document.getElementById("IdDeleteTxt").innerHTML;
+        DeleteDriver(id);
+
+    })
+    function  DeleteDriver(id){
+        $.ajax({
+            url: BASE_URL+"/driver?id=" + id ,
+            method: 'DELETE',
+            success: function (response) {
+            },
+            error: function (error) {
+            }
+        });
+    }
+
+    $("#driverSearchBtn").click(function (){
+         searchId=$("#driverSearchIdTxt").val()
+        searchDriver(searchId);
+    })
+    function  searchDriver(searchId){
+        $.ajax({
+            url: BASE_URL+"/driver?id=" + searchId,
+            method: "GET",
+            success: function (response) {
+                let res=response.data;
+                var lid=res.licenseId;
+                var name=res.name;
+                var contact=res.contact;
+                var address=res.address;
+                document.getElementById("txtLicenseId").innerHTML=lid;
+                document.getElementById("txtDName").innerHTML=name;
+                document.getElementById("txtDContact").innerHTML=contact;
+                document.getElementById("txtDAddress").innerHTML=address;
+            },
+            error: function (error) {
+            }
+        })
+    }
+
+$("#driverSaveBtn").click(function () {
+    var licenseID = $("#licenseIDInputTxt").val();
+    var name = $("#nameInputTxt").val();
+    var contact = $("#contactInputTxt").val();
+    var address = $("#addressInputTxt").val();
+    //alert(licenseID+ ","+name);
+    addDriver(licenseID,name,contact,address);
+});
+
+function addDriver(licenseID,name,contact,address) {
+    $.ajax({
+        url: BASE_URL+"/driver?lid=" + licenseID + "&name=" + name + "&contact=" + contact + "&address=" + address,
+        method: 'POST',
+        success: function (response) {
+        },
+        error: function (error) {
+        }
+    });
+}
+
+$("#driverUpdateBtn").click(function (){
+    var UpdateId=document.getElementById("IdUpdateTxt").innerHTML=searchId;
+   var  UpdateLId=$("#licenseIDUpdateTxt").val(document.getElementById("txtLicenseId").innerHTML);
+   var  UpdateName=$("#nameUpdateTxt").val(document.getElementById("txtDName").innerHTML);
+   var  UpdateContact=$("#contactUpdateTxt").val(document.getElementById("txtDContact").innerHTML);
+   var  UpdateAddress=$("#addressUpdateTxt").val(document.getElementById("txtDAddress").innerHTML);
+})
+    $("#FinaldriverUpdateBtn").click(function (){
+     //  var UpdateId= $("#IdUpdateTxt").innerHTML
+        var UpdateId=document.getElementById("IdUpdateTxt").innerHTML;
+       var UpdateLId= $("#licenseIDUpdateTxt").val()
+       var UpdateName= $("#nameUpdateTxt").val()
+       var UpdateContact= $("#contactUpdateTxt").val()
+       var UpdateAddress= $("#addressUpdateTxt").val()
+
+        updateDriver(UpdateId,UpdateLId,UpdateName,UpdateContact,UpdateAddress);
+    })
+
+    function updateDriver(UpdateId,UpdateLId,UpdateName,UpdateContact,UpdateAddress){
+        $.ajax({
+            url: BASE_URL+"/driver?id="+UpdateId+"&lid=" + UpdateLId + "&name=" + UpdateName + "&contact=" + UpdateContact + "&address=" + UpdateAddress,
+            method: 'PUT',
+            success: function (response) {
+            },
+            error: function (error) {
+            }
+        });
+    }
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,5 +1,7 @@
 .firstbox{
     position: relative;
+
+    border: solid 1px black;
 }
 
 .dd{
@@ -166,4 +168,43 @@
     margin-left: 723px;
     top: -58px;
     border-radius: 40px;
+}
+.customerDetailsSecInRCI ,.vehicleDetailsSecInRCI,.rentDetailsSec{
+    margin: 10px;
+    width: 380px;
+    border-radius: 20px;
+    background-color: #f5f6fa;
+}
+.CusVehiDetailBox{
+    position: relative;
+}
+.vehicleDetailsSecInRCI{
+    position: absolute;
+    top:-5px;
+    margin-left: 450px;
+}
+.rentDetailsSec{
+    position: absolute;
+    top:-5px;
+    margin-left: 900px;
+}
+.rentCheckInInputBox{
+    margin-top: 80px;
+}
+
+#carContent{
+    border: black solid 1px;
+    width: 200px;
+    margin: 50px;
+}
+#carContentImg{
+    width: 150px;
+    height: 150px;
+    margin: 15px;
+}
+#carContentButton{
+    height: 30px;
+    width: 120px;
+    margin-left: 35px;
+    background-color:#b1dfbb;
 }

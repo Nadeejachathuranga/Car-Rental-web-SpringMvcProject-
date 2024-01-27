@@ -18,46 +18,59 @@
     Search
   </button>
 </div><!--checkOutSec-->
-  <div class="card-deck">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Customer Details</h5>
-        <h6 id="cusId">Customer Id</h6>
-        <h6 id="cusName">Customer Name</h6>
-        <h6 id="cusLid">Customer Lid</h6>
-        <h6 id="cusAdd">Customer Address</h6>
-        <h6 id="cusTp">Customer Contact No</h6>
-        <h6 id="cusEm">Customer Email</h6>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Vehicle Details</h5>
-        <h6 id="carId">Car Id</h6>
-        <h6 id="carName">Car Name</h6>
-        <h6 id="carBrand">Car Brand</h6>
-        <h6 id="carNPS">Passenger Seats</h6>
-        <h6 id="carPrice">Price</h6>
-        <h6 id="carRate">Price Of Extra Km</h6>
-        <h6 id="carREegNo">Car Reg No</h6>
-      </div>
-    </div>
+  <div class="CusVehiDetailBox">
+    <div class="vehicleDetailsSecInRCI">
+      <h5 style="margin: 10px">Vehicle Details</h5>
+      <label  style="font-weight: bold"> ID</label>
+      <h6 id="carId"></h6>
+      <label  style="font-weight: bold"> NAME</label>
+      <h6 id="carName"></h6>
+      <label  style="font-weight: bold"> BRAND</label>
+      <h6 id="carBrand"></h6>
+      <label  style="font-weight: bold"> PASSENGER SEATS</label>
+      <h6 id="carNPS"></h6>
+      <label  style="font-weight: bold"> PRICE</label>
+      <h6 id="carPrice"></h6>
+      <label  style="font-weight: bold"> PRICE OF EXTRA KM</label>
+      <h6 id="carRate"></h6>
+      <label  style="font-weight: bold"> REG NUMBER</label>
+      <h6 id="carREegNo"></h6>
+    </div><!--vehicleDetailsSecInRCI-->
+  <div class="customerDetailsSecInRCI">
+    <h5 style="margin: 10px">Customer Details</h5>
+    <label  style="font-weight: bold"> ID</label>
+    <h6 id="cusId"></h6>
+    <label style="font-weight: bold" > NAME</label>
+    <h6 id="cusName"></h6>
+    <label style="font-weight: bold" > LICENSE NUMBER</label>
+    <h6 id="cusLid"></h6>
+    <label style="font-weight: bold" > ADDRESS</label>
+    <h6 id="cusAdd"></h6>
+    <label style="font-weight: bold"> CONTACT NUMBER</label>
+    <h6 id="cusTp"></h6>
+    <label style="font-weight: bold"> EMAIL</label>
+    <h6 id="cusEm"></h6>
+  </div><!--customerDetailsSec-->
+    <DIV class="rentDetailsSec">
+      <h5 style="margin: 10px">Rent Details</h5>
+      <label style="font-weight: bold"> ID</label>
+      <h6 id="rentId"></h6>
+      <label style="font-weight: bold"> STATUS</label>
+      <h6 id="rentSatus"></h6>
+      <label style="font-weight: bold"> PICK DAY</label>
+      <h6 id="rentPD"></h6>
+      <label style="font-weight: bold"> REQUIRED DAYS</label>
+      <h6 id="rentRD"></h6>
+    </DIV><!--rentDetailsSec-->
+  </div><!--CusVehiDetailBox-->
 
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Rent Details</h5>
-          <h6 id="rentId">Rent Id</h6>
-          <h6 id="rentSatus">Status</h6>
-          <h6 id="rentPD">PickUp Day</h6>
-          <h6 id="rentRD">Required Rent Days</h6>
-      </div>
-    </div>
-  </div>
+  <div class="rentCheckInInputBox">
   <div class="form-group">
    <h5 id="lblRKm"></h5>
     <input type="text" class="form-control" id="KmInputTxt" placeholder=" ">
   </div>
   <button  id="proceedBtn" type="submit" class="btn btn-primary">Proceed Rent</button>
+  </div><!--rentCheckInInputBox-->
 </div><!--Container-Fluid-->
 
 <script>
@@ -110,12 +123,12 @@
         let cR = car.rate;
         let cEPK = car.priceExtraKm;
         let cReg = car.regNo;
-        document.getElementById("carName").innerHTML="Car Name ="+cName;
-        document.getElementById("carBrand").innerHTML="Car Brand ="+cBrand;
-        document.getElementById("carNPS").innerHTML="No Of Passenger ="+cNPS;
-        document.getElementById("carPrice").innerHTML="Price Of Per Day ="+cR;
-        document.getElementById("carRate").innerHTML="Price Of Extra Km ="+cEPK;
-        document.getElementById("carREegNo").innerHTML="reg Number ="+cReg;
+        document.getElementById("carName").innerHTML=cName;
+        document.getElementById("carBrand").innerHTML=cBrand;
+        document.getElementById("carNPS").innerHTML=cNPS;
+        document.getElementById("carPrice").innerHTML=cR;
+        document.getElementById("carRate").innerHTML=cEPK;
+        document.getElementById("carREegNo").innerHTML=cReg;
       }
     });
 
@@ -134,11 +147,11 @@
         let lid = rents.lid;
         let cont = rents.contact;
         let email = rents.email;
-        document.getElementById("cusName").innerHTML="Customer Name ="+name;
-        document.getElementById("cusLid").innerHTML="License Id ="+lid;
-        document.getElementById("cusTp").innerHTML="Contact Number ="+cont;
-        document.getElementById("cusEm").innerHTML="Email ="+email;
-        document.getElementById("cusAdd").innerHTML="Address ="+add;
+        document.getElementById("cusName").innerHTML=name;
+        document.getElementById("cusLid").innerHTML=lid;
+        document.getElementById("cusTp").innerHTML=cont;
+        document.getElementById("cusEm").innerHTML=email;
+        document.getElementById("cusAdd").innerHTML=add;
       }
 
     });
@@ -157,12 +170,12 @@ function findRent(rentId){
        rDays = rent.days;
       let pDay = rent.pickDay;
       let rStatus = rent.statuss;
-      document.getElementById("cusId").innerHTML="Customer Id="+cusId;
-      document.getElementById("carId").innerHTML="Car Id="+carId;
-      document.getElementById("rentId").innerHTML="Rent Id="+id;
-      document.getElementById("rentSatus").innerHTML="Request="+rStatus;
-      document.getElementById("rentPD").innerHTML="PickUp Day="+pDay;
-      document.getElementById("rentRD").innerHTML="Request Days="+rDays;
+      document.getElementById("cusId").innerHTML=cusId;
+      document.getElementById("carId").innerHTML=carId;
+      document.getElementById("rentId").innerHTML=id;
+      document.getElementById("rentSatus").innerHTML=rStatus;
+      document.getElementById("rentPD").innerHTML=pDay;
+      document.getElementById("rentRD").innerHTML=rDays;
 
       if (rStatus=="Accept"){
 

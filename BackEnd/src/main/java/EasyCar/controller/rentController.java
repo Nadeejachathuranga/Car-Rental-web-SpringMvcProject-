@@ -17,10 +17,16 @@ public class rentController {
     rentService rentService;
 
     @PostMapping(params = {"rentId","cusId","carId","days","pickDay","statuss"})
-    public rentDto makeRent(String rentId,String cusId,String carId,String days,String pickDay,String statuss){
+    public ResponseUtil makeRent(String rentId,String cusId,String carId,String days,String pickDay,String statuss){
         rentDto rentDto = new rentDto(AutoGeneretId, cusId, carId, days, pickDay, statuss);
-        System.out.println("Invode heeeeeeee");
-       return rentService.makeRent(rentDto);
+        System.out.println("makeRent method invoked");
+        System.out.println(cusId);
+        System.out.println(carId);
+        System.out.println(days);
+        System.out.println(pickDay);
+        System.out.println(statuss);
+       rentService.makeRent(rentDto);
+        return new ResponseUtil("Ok", "Successfully Loaded", AutoGeneretId);
     }
 
     @PutMapping(params = {"rentId","cusId","carId","days","pickDay","statuss"})

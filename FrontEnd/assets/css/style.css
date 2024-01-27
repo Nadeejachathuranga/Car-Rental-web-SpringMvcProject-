@@ -208,6 +208,9 @@
     margin-left: 35px;
     background-color:#b1dfbb;
 }
-#pickupday ,#rentdays{
+#pickupday {
     margin-left: 160px;
+}
+#rentdays{
+    margin-left: 190px;
 }

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
-<body class="body">
+<body class="body" onload="findLuxuryCars();">
 <div class="container-fluid">
     <nav class="navbar navbar-dark bg-dark navbar-expand-sm">
         <a href="" class="navbar-brand">navbrand</a>
@@ -22,9 +22,180 @@
         </div>
     </nav>
 </div>
+
+
 <div class="d-flex  justify-content-around bd-highlight " id="carsArea">
 </div>
+
+
+<section class="row">
+    <div class="col-6 col-lg-5 mt-3">
+        <div class="requestBOx">
+            <h3 class="ml-4">Luxury Cars</h3>
+            <div class="images">
+                <img src="../img/sedan.jpg" width="350px" height="250px" >
+            </div>
+            <div class="bReq">
+                <label class="ml-4">CAR ID</label>
+                <h6 class="ml-4" id="carId"></h6>
+                <label class="ml-4">CAR MODEL</label>
+                <h6 class="ml-4" id="carName"></h6>
+                <label class="ml-4">BOOK DATES</label>
+                <h6 id="bookingDays"></h6>
+            </div>
+            <div class="bInfo">
+                <h6 id="bvName">   </h6>
+                <h6 id="bPricePerDay">  </h6>
+                <h6 id="bFreeKm">  </h6>
+                <h6 id="bMultiple"> </h6>
+                <h6 id="bAmount">  </h6>
+            </div>
+            <div class="row">
+                <button type="button" class="btn btn-primary ml-4" data-toggle="modal" data-target="#exampleModalMoreContent12" >
+                    Choose
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-lg-6 mt-3">
+        <table class="table table-bordered table-hover" id="tb">
+            <thead class="bg-success text-white">
+            <tr><th>Id</th>
+                <th>Name</th>
+                <th>Brand</th>
+                <th>Colour</th>
+                <th>Fuel</th>
+                <th>Passengers</th>
+                <th>Price Of Extra Km</th>
+                <th>Price Per day</th>
+                <th>Reg.No</th>
+            </tr>
+            </thead>
+            <tbody id="tblCustomer">
+
+            </tbody>
+        </table>
+    </div>
+
+</section>
+
+<div class="modal fade" tabindex="-1" id="exampleModalMoreContent12" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Registration Form </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Modal Body -->
+                <form id="regForm">
+                    <div class="form-group">
+                        <label for="idInputTxt">Your Id</label>
+                        <input type="text" class="form-control" id="idInputTxt" placeholder="insert Id">
+                    </div>
+                    <H6 class="mb-4">Please select your pickup day</H6>
+                    <div class="form-group d-flex  justify-content-around bd-highlight" id="Cccc">
+                        <label class="ml-4">YEAR</label>
+                        <select id="yearSelect">
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                            <option value="2026">2026</option>
+                        </select>
+                        <label class="ml-4">MONTH</label>
+                        <select id="monthSelect">
+                            <option value="JANUARY">JANUARY</option>
+                            <option value="FEBRUARY">FEBRUARY</option>
+                            <option value="MARCH">MARCH</option>
+                            <option value="APRIL">APRIL</option>
+                        </select>
+                        <label class="ml-4">DAY</label>
+                        <select id="daySelect">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                    <H7 class="mb-5 mr-5" id="pickupday"></H7>
+                    <H6 class="mb-4">Please select your rent days</H6>
+                    <div class="form-group d-flex  justify-content-around bd-highlight" >
+                        <label class="ml-4">DAYS</label>
+                        <select id="daysSelect">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option><option value="1">1</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                        <label class="ml-4">WEEKS</label>
+                        <select id="weeksSelect">
+                            <option value="1-WEEKS">1-WEEKS</option>
+                            <option value="2-WEEKS">2-WEEKS</option>
+                            <option value="3-WEEKS">3-WEEKS</option>
+                            <option value="4-WEEKS">4-WEEKS</option>
+                            <option value="5-WEEKS">5-WEEKS</option>
+                            <option value="6-WEEKS">6-WEEKS</option>
+                        </select>
+                        <label class="ml-4">MONTHS</label>
+                        <select id="monthsSelect">
+                            <option value="1-MONTHS">1-MONTHS</option>
+                            <option value="2-MONTHS">2-MONTHS</option>
+                            <option value="3-MONTHS">3-MONTHS</option>
+                            <option value="4-MONTHS">4-MONTHS</option>
+                        </select>
+                    </div>
+                    <H7 class="mb-5 mr-5" id="rentdays">fghf</H7>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button  id="conform" type="submit" class="btn btn-primary">Conform</button>
+                <p> </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- // Modal more content -->
 <script>
+    const BASE_URL = "http://localhost:8080/BackEnd_war";
+    var year;
+    var month="";
+    var day="";
+    var pickupDay;
+
+    // set pick up year functions
+    $("#yearSelect").click(function (){
+        year= $("#yearSelect").val()
+        console.log(year)
+        pickupDay=year+" "+month+" "+day;
+        document.getElementById("pickupday").innerHTML=pickupDay;
+    })
+
+    // set pick up month functions
+    $("#monthSelect").click(function (){
+        month= $("#monthSelect").val()
+       console.log(month)
+        pickupDay=year+" "+month+" "+day;
+        document.getElementById("pickupday").innerHTML=pickupDay;
+    })
+
+    // set pick up day functions
+    $("#daySelect").click(function (){
+        day= $("#daySelect").val()
+        console.log(day)
+        pickupDay=year+" "+month+" "+day;
+        console.log(pickupDay)
+        document.getElementById("pickupday").innerHTML=pickupDay;
+    })
+
+
     for  (i=0;i<4;i++) {
         const carContent = document.createElement('div');
         carContent.id='carContent';
@@ -44,6 +215,65 @@
     $("#carContentButton").click(function (){
         alert("hey");
     });
+
+
+    function findLuxuryCars(){
+        $("#tblCustomer").empty();
+        $.ajax({
+            url:BASE_URL+"/car",
+            method:'GET',
+            success:function (resp) {
+                let cars = resp.data;
+                for (let i in cars) {
+                    let car = cars[i];
+                    if (car.type=="LUXURY") {
+                        carid=car.id;
+                        let name = car.name;
+                        let brand = car.brand;
+                        let colour = car.color;
+                        let fuel = car.fuel;
+                        let passe = car.noOfPassengers;
+                        let pek = car.priceExtraKm;
+                        let pd = car.rate;
+                        let reg = car.regNo;
+                        let row = `<tr><td>${carid}</td><td>${name}</td><td>${brand}</td><td>${colour}</td><td>${fuel}</td><td>${passe}</td><td>${pek}</td><td>${pd}</td><td>${reg}</td></tr>`;
+                        $("#tblCustomer").append(row);
+                    }
+                }
+                selectRow();
+            },
+            error:function (error) {
+                alert("error");
+            }
+        })
+
+        function selectRow() {
+            let id;
+            let name;
+            $('#tblCustomer>tr').click(function () {
+                id = $(this).children().eq(0).text();
+                name = $(this).children().eq(1).text();
+                document.getElementById("carId").innerHTML = id;
+                document.getElementById("carName").innerHTML = name;
+            })
+            findBookDates(id);
+        }
+
+        function findBookDates(id){
+            $.ajax({
+                url:BASE_URL,
+                method:"get",
+                success: function (response) {
+
+                },
+                error: function (error){
+
+                }
+            })
+        }
+    }
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>

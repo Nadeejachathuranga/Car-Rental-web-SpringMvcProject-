@@ -104,7 +104,7 @@
                             <label for="idInputTxt">Your Id</label>
                             <input type="text" class="form-control" id="idInputTxt" placeholder="insert Id">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" id="Cccc">
                             <label for="dayInputTxt">Days</label>
                             <input type="text" class="form-control" id="dayInputTxt" placeholder="Ex..> 2 days">
                         </div>
@@ -130,6 +130,18 @@
     const BASE_URL = "http://localhost:8080/BackEnd_war";
     let carid;
     let LastID;
+const adNewC=document.getElementById("Cccc");
+    const food = document.createElement('select');
+    const foodOptions = ['Before Meal', 'After Meal','Every Meal'];
+    foodOptions.forEach(option => {
+        const foodOption = document.createElement('option');
+        foodOption.value = option;
+        foodOption.textContent = option;
+        food.appendChild(foodOption);
+        adNewC.appendChild(food);
+    });
+
+
 
 $("#conform").click(function (){
     let cusId=$("#idInputTxt").val();

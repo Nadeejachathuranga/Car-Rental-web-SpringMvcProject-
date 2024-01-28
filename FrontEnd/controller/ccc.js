@@ -1,8 +1,10 @@
 
     const BASE_URL = "http://localhost:8080/BackEnd_war";
 
+    const NAME="nadee";
+
     $("#sub").click(function () {
-    let id=$("#idInputTxt").val();
+   let id=$("#idInputTxt").val();
    let name=$("#nameInputTxt").val();
     let address=$("#addressInputTxt").val();
     let lid=$("#lidInputTxt").val();
@@ -11,8 +13,20 @@
 
        addCus(id,name,address,lid,contact,email);
         //deleting(id);
-   // alert("fdgfdg")
+    //alert("fdgfdg")
     });
+
+
+    $("#LoginConformButton").click(function () {
+       var id=$("#lgidInputTxt").val()
+       var name=$("#lgnameInputTxt").val()
+        if (id=="005" && name=="nad" ){
+            window.location.href="assets/pages/ProfilePage.html";
+        }else {
+            alert(" failed");
+        }
+    });
+
 
     $("#accBb").click(function () {
         alert("fdgfdghuihiuh")
@@ -55,6 +69,8 @@
         });
    };
 
+
+
 /*function regClient(){
      $("#regForm").serialize();
     alert("clicked regform");
@@ -77,5 +93,4 @@
     });
     alert("final");
 }*/
-
 

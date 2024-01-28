@@ -12,5 +12,6 @@ public interface rentService {
     List<rentDto> getAllReqRent();
 
     rentDto findById(rentDto rentDto);
+   // List<rentDto> findByCarId(String carId);
     String findLastId();
 }

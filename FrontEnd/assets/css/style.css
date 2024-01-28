@@ -209,8 +209,12 @@
     background-color:#b1dfbb;
 }
 #pickupday {
-    margin-left: 160px;
+    margin-left: 170px;
 }
 #rentdays{
     margin-left: 190px;
+}
+#errorMsg{
+    color: red;
+    margin-left: 120px;
 }

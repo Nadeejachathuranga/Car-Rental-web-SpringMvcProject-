@@ -23,4 +23,8 @@ public class rentDto {
     public rentDto(String id) {
         this.rentId=id;
     }
+
+    public rentDto(String id, String carId, String non) {
+        this.carId=carId;
+    }
 }

@@ -105,10 +105,10 @@
                         </select>
                         <label class="ml-4">MONTH</label>
                         <select id="monthSelect">
-                            <option value="JANUARY">JANUARY</option>
-                            <option value="FEBRUARY">FEBRUARY</option>
-                            <option value="MARCH">MARCH</option>
-                            <option value="APRIL">APRIL</option>
+                            <option value="JAN">JANUARY</option>
+                            <option value="FEB">FEBRUARY</option>
+                            <option value="MAR">MARCH</option>
+                            <option value="APR">APRIL</option>
                         </select>
                         <label class="ml-4">DAY</label>
                         <select id="daySelect">
@@ -119,6 +119,7 @@
                         </select>
                     </div>
                     <H7 class="mb-5 mr-5" id="pickupday"></H7>
+                    <H6 class="mb-5 mr-5" id="errorMsg"></H6>
                     <H6 class="mb-4">Please select your rent days</H6>
                     <div class="form-group d-flex  justify-content-around bd-highlight" >
                         <label class="ml-4">DAYS</label>
@@ -136,6 +137,7 @@
                         </select>
                     </div>
                     <H7 class="mb-5 mr-5" id="rentdays">Total days</H7>
+                    <div id="bookDate"></div>
                 </form>
             </div>
             <div class="modal-footer">
@@ -166,6 +168,7 @@
         console.log(year)
         pickupDay=year+" "+month+" "+day;
         document.getElementById("pickupday").innerHTML=pickupDay;
+        findId(pickupDay);
     })
 
     // set pick up month functions
@@ -174,6 +177,7 @@
        console.log(month)
         pickupDay=year+" "+month+" "+day;
         document.getElementById("pickupday").innerHTML=pickupDay;
+        findId(pickupDay);
     })
 
     // set pick up day functions
@@ -183,30 +187,75 @@
         pickupDay=year+" "+month+" "+day;
         console.log(pickupDay)
         document.getElementById("pickupday").innerHTML=pickupDay;
+        pickDateValidation(pickupDay);
     })
+
 
     ///////////////////////////////////////////////////
     // set total rent days functions
     $("#daysSelect").click(function (){
         rTDays=$("#daysSelect").val()
         document.getElementById("rentdays").innerHTML=rTDays+" days";
+        rentDatesValidation(rTDays);
     })
+
+    function rentDatesValidation(rTDays){
+        const ErrDiv=document.getElementById("bookDate");
+        $.ajax({
+            url: BASE_URL + "/rent",
+            method: 'GET',
+            success: function (resp) {
+                let res=resp.data;
+                for (let i in res) {
+                    let rent = res[i];
+                    if (rent.statuss=="Accept"){
+                            for (i=day;i<rTDays;i++){
+                                if (rent.pickDay==year+" "+month+" "+i){
+                                    const bookH6 = document.createElement('h6');
+                                    bookH6.innerHTML=year+" "+month+" "+i;
+                                    ErrDiv.appendChild(bookH6);
+                                   // alert("Found");
+                                }
+                            }
+                    }
+                }
+            },
+            error:function (error) {
+                alert("Something went wrong");
+            },
+        });
+    }
 
     //////////////////////////////////////////////////
     // rent request function
     $("#conform").click(function (){
       var userId=$("#idInputTxt").val()
-        findId();
+       // findId();
         rentRequest(userId);
     })
 
-    function findId(){
+    function pickDateValidation(pickupDay){
         $.ajax({
-            url: BASE_URL + "/rent?id=kk&id=fg",
-            method: 'POST',
+            url: BASE_URL + "/rent",
+            method: 'GET',
             success: function (resp) {
-
-            }
+                let res=resp.data;
+                for (let i in res) {
+                    let rent = res[i];
+                    if (rent.statuss=="Accept"){
+                        if (rent.pickDay==pickupDay){
+                            document.getElementById("errorMsg").innerHTML="Sorry this date already book";
+                            document.getElementById("conform").disabled = true;
+                        }else {
+                            document.getElementById("errorMsg").innerHTML="";
+                            document.getElementById("conform").disabled = false;
+                        }
+                    }
+                }
+            },
+            error:function (error) {
+                alert("Something went wrong");
+            },
         });
     }
 

@@ -7,6 +7,8 @@ import EasyCar.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin
 @RestController
 @RequestMapping("/rent")
@@ -20,11 +22,6 @@ public class rentController {
     public ResponseUtil makeRent(String rentId,String cusId,String carId,String days,String pickDay,String statuss){
         rentDto rentDto = new rentDto(AutoGeneretId, cusId, carId, days, pickDay, statuss);
         System.out.println("makeRent method invoked");
-        System.out.println(cusId);
-        System.out.println(carId);
-        System.out.println(days);
-        System.out.println(pickDay);
-        System.out.println(statuss);
        rentService.makeRent(rentDto);
         return new ResponseUtil("Ok", "Successfully Loaded", AutoGeneretId);
     }
@@ -45,6 +42,15 @@ public class rentController {
         rentDto byId = rentService.findById(rentDto);
         return new ResponseUtil("Ok", "Successfully Loaded",byId);
     }
+   /* @GetMapping(params = {"id","carId"})
+    // for pickup date validation
+    public ResponseUtil findByCarId(String id ,String carId){
+      //  rentDto rentDto = new rentDto(id,carId,non);
+      //   rentService.findByCarId(carId);
+        System.out.println("findByCarId method invoked");
+        return new ResponseUtil("Ok", "Successfully Loaded",rentService.findByCarId(carId));
+    }*/
+
     @PostMapping(params = {"id","id"})
     public ResponseUtil hhh(){
         String lastId = rentService.findLastId();

@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -50,6 +51,13 @@ public class rentServiceImpl implements rentService {
         rent byId = rentRepo.findById(map.getRentId()).get();
        return mapper.map(byId,rentDto.class);
     }
+
+  //  @Override
+   /* public List<rentDto> findByCarId(String carId) {
+      //  List<rent> all = rentRepo.findBy();
+        return mapper.map(all, new TypeToken<List<rentDto>>() {
+        }.getType());
+    }*/
 
     @Override
     public String findLastId() {

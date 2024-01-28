@@ -230,9 +230,20 @@
     // rent request function
     $("#conform").click(function (){
       var userId=$("#idInputTxt").val()
-       // findId();
+        findId();
         rentRequest(userId);
     })
+
+    function findId(){
+        $.ajax({
+            url: BASE_URL + "/rent?id=kk&id=fg",
+            method: 'POST',
+            success: function (resp) {
+
+            }
+        });
+
+    }
 
     function pickDateValidation(pickupDay){
         $.ajax({

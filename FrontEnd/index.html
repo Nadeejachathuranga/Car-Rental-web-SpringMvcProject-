@@ -18,7 +18,7 @@
             <li class="nav-item active"><a href="" class="nav-link"> Home</a></li>
             <li class="nav-item"><a href="" class="nav-link"> Reg</a></li>
             <li class="nav-item"><a href="" class="nav-link"> Info</a></li>
-            <li class="nav-item"><a href="assets/pages/dashBoard.html" class="nav-link"> Log</a></li>
+            <li class="nav-item"><button class="bg-primary" id="AdminLoginBtn" data-toggle="modal" data-target="#adminLoginForm">Log</button></li>
         </ul>
     </div>
 </nav>
@@ -154,6 +154,38 @@
                         </div>
                         <div id="loginErr"></div>
                         <button  id="LoginConformButton" type="button" class="btn btn-primary">Done</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <p> </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- // Modal more content -->
+
+    <div class="modal fade" tabindex="-1" id="adminLoginForm" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Admin Login Form </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Modal Body -->
+                    <form id="adLogForm">
+                        <div class="form-group">
+                            <label for="idInputTxt">Id</label>
+                            <input type="text" class="form-control" id="adlgidInputTxt" placeholder="insert Id">
+                        </div>
+                        <div class="form-group">
+                            <label for="nameInputTxt">Name</label>
+                            <input type="text" class="form-control" id="adlgnameInputTxt" placeholder="inset Name">
+                        </div>
+                        <div id="adloginErr"></div>
+                        <button  id="adLoginConformButton" type="button" class="btn btn-primary">Done</button>
                     </form>
                 </div>
                 <div class="modal-footer">

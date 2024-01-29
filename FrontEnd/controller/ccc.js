@@ -4,6 +4,26 @@
     var UserId;
     var UserName;
 
+    var adId;
+    var AdName;
+
+    $("#adLoginConformButton").click(function () {
+        UserId=$("#lgidInputTxt").val()
+        UserName=$("#lgnameInputTxt").val()
+        /*if (id=="005" && name=="nad" ){
+            window.location.href="assets/pages/ProfilePage.html";
+        }else {
+            alert(" failed");
+        }*/
+        const validity=passwordValidation(UserId ,UserName);
+        if (validity==true){
+            window.location.href="assets/pages/dashBoard.html";
+        }else {
+
+        };
+    });
+
+
     $("#sub").click(function () {
    let id=$("#idInputTxt").val();
    let name=$("#nameInputTxt").val();

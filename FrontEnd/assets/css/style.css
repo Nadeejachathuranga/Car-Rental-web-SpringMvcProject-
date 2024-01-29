@@ -223,3 +223,8 @@
     width: 200px;
     margin: 20px 15px;
 }
+#AdminLoginBtn{
+    border: white;
+    margin-top:8px;
+    border-radius: 15px;
+}

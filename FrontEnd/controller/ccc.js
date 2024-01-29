@@ -8,14 +8,14 @@
     var AdName;
 
     $("#adLoginConformButton").click(function () {
-        UserId=$("#lgidInputTxt").val()
-        UserName=$("#lgnameInputTxt").val()
+        adId=$("#lgidInputTxt").val()
+        adId=$("#lgnameInputTxt").val()
         /*if (id=="005" && name=="nad" ){
             window.location.href="assets/pages/ProfilePage.html";
         }else {
             alert(" failed");
         }*/
-        const validity=passwordValidation(UserId ,UserName);
+        const validity=passwordValidation(adId ,adId);
         if (validity==true){
             window.location.href="assets/pages/dashBoard.html";
         }else {

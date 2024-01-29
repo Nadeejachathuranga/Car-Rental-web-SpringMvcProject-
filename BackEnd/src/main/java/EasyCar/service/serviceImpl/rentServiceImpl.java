@@ -48,7 +48,7 @@ public class rentServiceImpl implements rentService {
     @Override
     public rentDto findById(rentDto rentDto) {
         rent map = mapper.map(rentDto, rent.class);
-        rent byId = rentRepo.findById(map.getRentId()).get();
+        rent byId = rentRepo.findById(map.getCusId()).get();
        return mapper.map(byId,rentDto.class);
     }
 

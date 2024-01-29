@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
-<body>
+<body onload="getAllRequest();">
 <div class="container-fluid">
 <nav class="navbar navbar-dark bg-dark navbar-expand-sm">
     <a href="" class="navbar-brand">Easy Car Rental</a>
@@ -19,13 +19,14 @@
         </ul>
     </div>
 </nav>
+
+
 <section id="secOneProfilePage">
 <div class="card-deck">
     <div class="card">
         <div class="card-body">
-
     <h1 class="ml-4 mt-3" id="cusNameProfilePage">Nadeeja Chathuranga</h1>
-    <h6 class="ml-4 mt-1 " id="">c001</h6>
+    <h5 class="ml-4 mt-1 " id="userIDInProfilPage">c001</h5>
     <label class="ml-4">Contact number</label>
     <h6 class="ml-4 mt-1" id="">0715464</h6>
     <label class="ml-4">Nic number</label>
@@ -38,8 +39,64 @@
         </div>
     </div>
 </div>
-</section>
+</section><!--secOneProfilePage-->
+
+
+    <section>
+        <div id="requestDivision" class="d-flex justify-content-around flex-wrap"></div>
+    </section>
 </div><!--container -fluid-->
+<script>
+    const BASE_URL = "http://localhost:8080/BackEnd_war";
+    function getAllRequest() {
+      //  const userId=$("#userIDInProfilPage").val();
+        const userId="c005";
+        const requestDivisionDiv=document.getElementById("requestDivision");
+        $.ajax({
+            url: BASE_URL + '/rent',
+            method: 'GET',
+            dataType: "json",
+            success:function (response) {
+                let res=response.data;
+                for (let i in res) {
+                    let resp=res[i];
+                    if (resp.cusId==userId){
+                        let rentId=resp.rentId;
+                        let carId=resp.carId;
+                        let days=resp.days;
+                        let pickDay=resp.pickDay;
+                        let statuss=resp.statuss;
+                        const requestBox=document.createElement("div");
+                        requestBox.id="requestBox";
+                        const rentlbDiv=document.createElement("label");
+                        rentlbDiv.innerHTML=" RENT ID";
+                        requestBox.appendChild(rentlbDiv);
+                        const rentIdDiv=document.createElement("h6");
+                        rentIdDiv.innerHTML=rentId;
+                        requestBox.appendChild(rentIdDiv);
+                        const carIdDiv=document.createElement("h6");
+                        carIdDiv.innerHTML=carId;
+                        requestBox.appendChild(carIdDiv);
+                        const daysDiv=document.createElement("h6");
+                        daysDiv.innerHTML=days;
+                        requestBox.appendChild(daysDiv);
+                        const pickDayDiv=document.createElement("h6");
+                        pickDayDiv.innerHTML=pickDay;
+                        requestBox.appendChild(pickDayDiv);
+                        const statussDiv=document.createElement("h6");
+                        statussDiv.innerHTML=statuss;
+                        requestBox.appendChild(statussDiv);
+                        requestDivisionDiv.appendChild(requestBox);
+
+                    }
+                }
+            },
+            error:function (error) {
+                alert("Something went wrong");
+            }
+        })
+    }
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>

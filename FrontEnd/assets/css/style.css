@@ -218,3 +218,8 @@
     color: red;
     margin-left: 120px;
 }
+#requestBox{
+    border: solid red 1px;
+    width: 200px;
+    margin: 20px 15px;
+}

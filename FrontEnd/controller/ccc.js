@@ -1,7 +1,8 @@
 
     const BASE_URL = "http://localhost:8080/BackEnd_war";
 
-    const NAME="nadee";
+    var UserId;
+    var UserName;
 
     $("#sub").click(function () {
    let id=$("#idInputTxt").val();
@@ -18,13 +19,23 @@
 
 
     $("#LoginConformButton").click(function () {
-       var id=$("#lgidInputTxt").val()
-       var name=$("#lgnameInputTxt").val()
-        if (id=="005" && name=="nad" ){
+       UserId=$("#lgidInputTxt").val()
+       UserName=$("#lgnameInputTxt").val()
+        /*if (id=="005" && name=="nad" ){
             window.location.href="assets/pages/ProfilePage.html";
         }else {
             alert(" failed");
-        }
+        }*/
+       const validity=passwordValidation(UserId ,UserName);
+       if (validity==true){
+           window.location.href="assets/pages/ProfilePage.html";
+       }else {
+          const loginModel=document.getElementById("loginErr");
+           const loginErrorMsg= document.createElement("h6");
+           loginErrorMsg.innerHTML="sorry miss match user name & password";
+           loginErrorMsg.style.color="red";
+           loginModel.appendChild(loginErrorMsg);
+       };
     });
 
 

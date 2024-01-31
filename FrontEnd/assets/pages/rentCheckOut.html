@@ -90,60 +90,65 @@ var totalkm;
   var difOfReturnMonth;
   var difOfReturnYear;
 
-  $("#paymetBtn").click(function (){
+  $("#paymetBtn").click(function () {
     /* totalkm=$("#tripKmInputTxt").val();
       var km=totalkm-startkm;
      var finalKm =(km-fkm)*65;
      var finalamount=finalKm+price*days;
     document.getElementById("amount").innerHTML="Extra km Amount ="+finalKm;
     document.getElementById("total").innerHTML="Total Amount ="+finalamount;*/
+    returnDateValidation();
+  });
+
+  function returnDateValidation() {
     const date = new Date();
 
     let day = date.getDate();
-    let month = date.getMonth()+ 1 ;
+    let month = date.getMonth() + 1;
     let year = date.getFullYear();
 
 // This arrangement can be altered based on how we want the date's format to appear.
-   // let currentDate = `${day}-${month}-${year}`;
+    // let currentDate = `${day}-${month}-${year}`;
     let currentDate = `${year}/${month}/${day}`;
     //console.log(currentDate);
 
-       var states;
+    var states;
 
 
-      var dayOfPickDay=3;
-      var monthOfPickDay=2;
-      var yearOfPickDay=2024;
+    var dayOfPickDay = 3;
+    var monthOfPickDay = 1;
+    var yearOfPickDay = 2024;
 
-       var reqDays=5;
-       var total=dayOfPickDay+reqDays-1;
-       var returnDay=yearOfPickDay+"/"+monthOfPickDay+"/"+total;
-       var pickDay;
+    var reqDays = 5;
+    var total = dayOfPickDay + reqDays - 1;
+    var returnDay = yearOfPickDay + "/" + monthOfPickDay + "/" + total;
+    var pickDay;
 
-      pickDay=yearOfPickDay+"/"+monthOfPickDay+"/"+dayOfPickDay;
+    pickDay = yearOfPickDay + "/" + monthOfPickDay + "/" + dayOfPickDay;
 
-      var today="2024/2/10";
-      var dayOfToDay=today.substring(7,9);
-      var monthOfToDay=today.substring(5,6);
-      var yearOfToDay=today.substring(0,4);
+    var today = year + "/" + month + "/" + day;
+    var dayOfToDay = today.substring(7, 9);
+    var monthOfToDay = today.substring(5, 6);
+    var yearOfToDay = today.substring(0, 4);
 
-      if (yearOfPickDay==yearOfToDay & monthOfPickDay==monthOfToDay & total==dayOfToDay ){
-        alert("same");
-      }else {
-        alert("not same");
-            if (total!==dayOfToDay){
-               states="date";
-              findLateDays(states,total,dayOfToDay);
-            }
-        if (monthOfPickDay!==monthOfToDay){
-          states="month";
-          findLateDays(states,monthOfPickDay,monthOfToDay);
-        }
-        if (yearOfPickDay!==yearOfToDay){
-          states="year";
-          findLateDays(states,yearOfPickDay,yearOfToDay);
-        }
+    if (yearOfPickDay == yearOfToDay & monthOfPickDay == monthOfToDay & total == dayOfToDay) {
+      alert("same");
+    } else {
+      alert("not same");
+      if (total !== dayOfToDay) {
+        states = "date";
+        findLateDays(states, total, dayOfToDay);
       }
+      if (monthOfPickDay !== monthOfToDay) {
+        states = "month";
+        findLateDays(states, monthOfPickDay, monthOfToDay);
+      }
+      if (yearOfPickDay !== yearOfToDay) {
+        states = "year";
+        findLateDays(states, yearOfPickDay, yearOfToDay);
+      }
+    }
+  };
 
      // alert(today +" :"+ yearOfToDay+" "+monthOfToDay+" "+dayOfToDay+" ")
       // alert(" pick day = "+pickDay +": req days = "+reqDays +" : return days = "+returnDay +"  "+dayOfToDay)
@@ -153,7 +158,7 @@ var totalkm;
     }*/
 
   //alert(monthOfPickDay)
-  });
+
 
   function findLateDays(states,value1,value2) {
 

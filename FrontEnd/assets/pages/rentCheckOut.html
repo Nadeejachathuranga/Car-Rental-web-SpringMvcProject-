@@ -56,14 +56,25 @@
 
       </div>
     </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Hand Over info</h5>
+        <h6 id="rentId">Return day</h6>
+        <h6 id="rentId">Late days</h6>
+        <h6 id="rentId">charge of the late days</h6>
+        <h6 id="rentId">Charge of extra Km</h6>
+        <h6 id="rentId">Total Amount</h6>
+      </div>
+    </div>
   </div>
   <div class="form-group">
     <h5 id="lblRKm"></h5>
     <input type="text" class="form-control" id="tripKmInputTxt" placeholder="insert  trip km ">
     <input type="text" class="form-control" id="payIdTxt" placeholder=" payment id">
   </div>
-  <button  id="proceedBtn" type="submit" class="btn btn-primary">Proceed Rent</button>
   <button  id="paymetBtn" type="submit" class="btn btn-primary">Check Payment</button>
+  <button  id="proceedBtn" type="submit" class="btn btn-primary">Proceed Rent</button>
 </div><!--Container-Fluid-->
 <script>
   const BASE_URL = "http://localhost:8080/BackEnd_war";
@@ -75,17 +86,118 @@ let price;
 let days;
 var totalkm;
   var rentCOId;
+  var difOfReturnDay;
+  var difOfReturnMonth;
+  var difOfReturnYear;
 
   $("#paymetBtn").click(function (){
-     totalkm=$("#tripKmInputTxt").val();
+    /* totalkm=$("#tripKmInputTxt").val();
       var km=totalkm-startkm;
      var finalKm =(km-fkm)*65;
      var finalamount=finalKm+price*days;
     document.getElementById("amount").innerHTML="Extra km Amount ="+finalKm;
-    document.getElementById("total").innerHTML="Total Amount ="+finalamount;
-      alert(finalKm)
+    document.getElementById("total").innerHTML="Total Amount ="+finalamount;*/
+    const date = new Date();
 
-  })
+    let day = date.getDate();
+    let month = date.getMonth()+ 1 ;
+    let year = date.getFullYear();
+
+// This arrangement can be altered based on how we want the date's format to appear.
+   // let currentDate = `${day}-${month}-${year}`;
+    let currentDate = `${year}/${month}/${day}`;
+    //console.log(currentDate);
+
+       var states;
+
+
+      var dayOfPickDay=3;
+      var monthOfPickDay=2;
+      var yearOfPickDay=2024;
+
+       var reqDays=5;
+       var total=dayOfPickDay+reqDays-1;
+       var returnDay=yearOfPickDay+"/"+monthOfPickDay+"/"+total;
+       var pickDay;
+
+      pickDay=yearOfPickDay+"/"+monthOfPickDay+"/"+dayOfPickDay;
+
+      var today="2024/2/10";
+      var dayOfToDay=today.substring(7,9);
+      var monthOfToDay=today.substring(5,6);
+      var yearOfToDay=today.substring(0,4);
+
+      if (yearOfPickDay==yearOfToDay & monthOfPickDay==monthOfToDay & total==dayOfToDay ){
+        alert("same");
+      }else {
+        alert("not same");
+            if (total!==dayOfToDay){
+               states="date";
+              findLateDays(states,total,dayOfToDay);
+            }
+        if (monthOfPickDay!==monthOfToDay){
+          states="month";
+          findLateDays(states,monthOfPickDay,monthOfToDay);
+        }
+        if (yearOfPickDay!==yearOfToDay){
+          states="year";
+          findLateDays(states,yearOfPickDay,yearOfToDay);
+        }
+      }
+
+     // alert(today +" :"+ yearOfToDay+" "+monthOfToDay+" "+dayOfToDay+" ")
+      // alert(" pick day = "+pickDay +": req days = "+reqDays +" : return days = "+returnDay +"  "+dayOfToDay)
+
+    /*if (monthOfPickDay<10){
+      monthOfPickDay="0"+monthOfPickDay;
+    }*/
+
+  //alert(monthOfPickDay)
+  });
+
+  function findLateDays(states,value1,value2) {
+
+    switch(states) {
+      case "date":
+        // code block
+        alert("dates")
+        if (value1>value2){
+          difOfReturnDay=value1-value2;
+          alert(difOfReturnDay);
+        }else {
+          difOfReturnDay=value2-value1;
+          alert(difOfReturnDay);
+        }
+        break;
+      case "month":
+        // code block
+        alert("month")
+        if (value1>value2){
+          difOfReturnMonth=value1-value2;
+          alert(difOfReturnMonth);
+        }else {
+          difOfReturnMonth=value2-value1;
+          alert(difOfReturnMonth);
+        }
+        break;
+      case "year":
+        // code block
+        alert("year")
+        if (value1>value2){
+          difOfReturnYear=value1-value2;
+          alert(difOfReturnYear);
+        }else {
+          difOfReturnYear=value2-value1;
+          alert(difOfReturnYear);
+        }
+        break;
+      default:
+            // code block
+    }
+
+  }
+
+
 
   $("#checkOutSecButton").click(function (){
      rentCOId=$("#checkOutSecTxt").val();

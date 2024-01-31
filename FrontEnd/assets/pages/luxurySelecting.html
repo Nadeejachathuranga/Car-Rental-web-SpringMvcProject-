@@ -105,10 +105,12 @@
                         </select>
                         <label class="ml-4">MONTH</label>
                         <select id="monthSelect">
-                            <option value="JAN">JANUARY</option>
-                            <option value="FEB">FEBRUARY</option>
-                            <option value="MAR">MARCH</option>
-                            <option value="APR">APRIL</option>
+                            <option value="1">JANUARY</option>
+                            <option value="2">FEBRUARY</option>
+                            <option value="3">MARCH</option>
+                            <option value="4">APRIL</option>
+                            <option value="5">MAY</option>
+                            <option value="6">JUNE</option>
                         </select>
                         <label class="ml-4">DAY</label>
                         <select id="daySelect">
@@ -116,6 +118,9 @@
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
                         </select>
                     </div>
                     <H7 class="mb-5 mr-5" id="pickupday"></H7>
@@ -162,12 +167,14 @@
     // total rent days calculate value
     var rTDays;
 
+
+
     ///////////////////////////////////////////////////
     // set pick up year functions
     $("#yearSelect").click(function (){
         year= $("#yearSelect").val()
         console.log(year)
-        pickupDay=year+" "+month+" "+day;
+        pickupDay=year+"/"+month+"/"+day;
         document.getElementById("pickupday").innerHTML=pickupDay;
         findId(pickupDay);
 
@@ -177,7 +184,7 @@
     $("#monthSelect").click(function (){
         month= $("#monthSelect").val()
        console.log(month)
-        pickupDay=year+" "+month+" "+day;
+        pickupDay=year+"/"+month+"/"+day;
         document.getElementById("pickupday").innerHTML=pickupDay;
         findId(pickupDay);
     })
@@ -186,7 +193,7 @@
     $("#daySelect").click(function (){
         day= $("#daySelect").val()
         console.log(day)
-        pickupDay=year+" "+month+" "+day;
+        pickupDay=year+"/"+month+"/"+day;
         console.log(pickupDay)
         document.getElementById("pickupday").innerHTML=pickupDay;
         pickDateValidation(pickupDay);
@@ -368,7 +375,7 @@
         }
     }
 </script>
-<script src="../../controller/ccc.js"></script>
+<script src="../../controller/IndexController.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>

@@ -102,19 +102,10 @@ var totalkm;
 
   function returnDateValidation() {
     const date = new Date();
-
     let day = date.getDate();
     let month = date.getMonth() + 1;
     let year = date.getFullYear();
-
-// This arrangement can be altered based on how we want the date's format to appear.
-    // let currentDate = `${day}-${month}-${year}`;
-    let currentDate = `${year}/${month}/${day}`;
-    //console.log(currentDate);
-
     var states;
-
-
     var dayOfPickDay = 3;
     var monthOfPickDay = 1;
     var yearOfPickDay = 2024;

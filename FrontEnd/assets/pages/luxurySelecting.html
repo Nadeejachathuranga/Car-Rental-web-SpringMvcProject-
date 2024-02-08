@@ -262,15 +262,13 @@
                 let res=resp.data;
                 for (let i in res) {
                     let rent = res[i];
-                    if(rent.carId == "car13") {
-                        if (rent.statuss == "Accept") {
-                            if (rent.pickDay == pickupDay) {
-                                document.getElementById("errorMsg").innerHTML = "Sorry this date already book";
-                                document.getElementById("conform").disabled = true;
-                            } else {
-                                document.getElementById("errorMsg").innerHTML = "";
-                                document.getElementById("conform").disabled = false;
-                            }
+                    if (rent.statuss=="Accept"){
+                        if (rent.pickDay==pickupDay){
+                            document.getElementById("errorMsg").innerHTML="Sorry this date already book";
+                            document.getElementById("conform").disabled = true;
+                        }else {
+                            document.getElementById("errorMsg").innerHTML="";
+                            document.getElementById("conform").disabled = false;
                         }
                     }
                 }

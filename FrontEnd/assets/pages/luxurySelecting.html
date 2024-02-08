@@ -217,16 +217,16 @@
                 let res=resp.data;
                 for (let i in res) {
                     let rent = res[i];
-                    if (rent.statuss=="Accept"){
-                            for (i=day;i<rTDays;i++){
-                                if (rent.pickDay==year+" "+month+" "+i){
+                        if (rent.statuss == "Accept") {
+                            for (i = day; i < rTDays; i++) {
+                                if (rent.pickDay == year + " " + month + " " + i) {
                                     const bookH6 = document.createElement('h6');
-                                    bookH6.innerHTML=year+" "+month+" "+i;
+                                    bookH6.innerHTML = year + " " + month + " " + i;
                                     ErrDiv.appendChild(bookH6);
-                                   // alert("Found");
+                                    // alert("Found");
                                 }
                             }
-                    }
+                        }
                 }
             },
             error:function (error) {
@@ -262,13 +262,15 @@
                 let res=resp.data;
                 for (let i in res) {
                     let rent = res[i];
-                    if (rent.statuss=="Accept"){
-                        if (rent.pickDay==pickupDay){
-                            document.getElementById("errorMsg").innerHTML="Sorry this date already book";
-                            document.getElementById("conform").disabled = true;
-                        }else {
-                            document.getElementById("errorMsg").innerHTML="";
-                            document.getElementById("conform").disabled = false;
+                    if(rent.carId == "car13") {
+                        if (rent.statuss == "Accept") {
+                            if (rent.pickDay == pickupDay) {
+                                document.getElementById("errorMsg").innerHTML = "Sorry this date already book";
+                                document.getElementById("conform").disabled = true;
+                            } else {
+                                document.getElementById("errorMsg").innerHTML = "";
+                                document.getElementById("conform").disabled = false;
+                            }
                         }
                     }
                 }

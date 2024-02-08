@@ -133,9 +133,9 @@
     });
 
     $("#pickupBtn").click(function () {
-
+        window.location.href="assets/pages/luxurySelecting.html";
     });
 
     $("#suvBtn").click(function () {
-
+        window.location.href="assets/pages/generalCarSelecting.html";
     });

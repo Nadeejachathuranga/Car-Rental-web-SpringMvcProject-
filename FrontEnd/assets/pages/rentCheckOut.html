@@ -48,11 +48,9 @@
         <h5 class="card-title">Rent Details</h5>
         <h6 id="rentId">Rent Id</h6>
         <h6 id="rentRD">Required Rent Days</h6>
+        <h6 id="rentRD2">Pick up day</h6>
+        <h6 id="rentRD3">Hand over day</h6>
         <h6 id="rentRD1">Start Km</h6>
-        <h6 id="rentRD2">Total Km</h6>
-        <h6 id="rentRD3">Free Km</h6>
-        <h6 id="amount">Extra km Amount</h6>
-        <h6 id="total">Total Amount</h6>
 
       </div>
     </div>
@@ -60,11 +58,11 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Hand Over info</h5>
-        <h6 id="rentId">Return day</h6>
-        <h6 id="rentId">Late days</h6>
-        <h6 id="rentId">charge of the late days</h6>
-        <h6 id="rentId">Charge of extra Km</h6>
-        <h6 id="rentId">Total Amount</h6>
+        <h6 id="">Return day</h6>
+        <h6 id="">Late days</h6>
+        <h6 id="">charge of the late days</h6>
+        <h6 id="">Charge of extra Km</h6>
+        <h6 id="">Total Amount</h6>
       </div>
     </div>
   </div>
@@ -89,6 +87,9 @@ var totalkm;
   var difOfReturnDay;
   var difOfReturnMonth;
   var difOfReturnYear;
+
+  var pickupDate;
+  var requestdays;
 
   $("#paymetBtn").click(function () {
     /* totalkm=$("#tripKmInputTxt").val();
@@ -198,8 +199,8 @@ var totalkm;
   $("#checkOutSecButton").click(function (){
      rentCOId=$("#checkOutSecTxt").val();
     findRentDe(rentCOId);
-
   })
+
 
   function findRentDe(rentCOId){
     $.ajax({
@@ -216,12 +217,13 @@ var totalkm;
         document.getElementById("rentRD").innerHTML="required days="+days;
         document.getElementById("rentRD1").innerHTML="Start km="+startkm;
         document.getElementById("rentRD2").innerHTML="Total Km="+tkm;
-        document.getElementById("rentRD3").innerHTML="free km="+fkm;
+
       },
     });
     findingCarId(rentCOId);
   }
   function findingCarId(rentCOId){
+
     $.ajax({
       url: BASE_URL + "/rent?id="+rentCOId,
       method: 'Get',
@@ -229,8 +231,11 @@ var totalkm;
         let car = resp.data;
         CarCOId=car.carId;
         CasCOId=car.cusId;
+        pickupDate=car.pickDay;
+        requestdays=car.days;
         document.getElementById("carId").innerHTML="car  Id="+CarCOId;
         document.getElementById("cusId").innerHTML="free km="+CasCOId;
+        document.getElementById("rentRD3").innerHTML="Pick up day="+pickupDate;
       },
     });
     FindCar(CarCOId);
